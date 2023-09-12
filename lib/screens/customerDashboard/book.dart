@@ -178,7 +178,11 @@ class _BookingScreenState extends State<BookingScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 50.0),
+            Image.asset(
+              'assets/images/laundry.webp',
+              height: 150,
+            ),
+            const SizedBox(height: 30.0),
             const Text(
               'Book Now!',
               textAlign: TextAlign.start,
