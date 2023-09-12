@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/auth/register.dart';
+import 'package:m4k/screens/customerDashboard/book.dart';
 import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
 import 'package:m4k/screens/splash/splash_screen.dart';
 
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegisterPage(),
         '/login': (context) => const LoginScreen(),
         '/userdashboard': (context) => const DashboardPage(),
+        '/book': (context) => const BookingScreen(),
       },
     );
   }

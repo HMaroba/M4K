@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/customerDashboard/bookings.dart';
 import 'package:m4k/screens/customerDashboard/profile.dart';
 import 'package:m4k/screens/customerDashboard/settings.dart';
 
@@ -16,9 +17,9 @@ class _DashboardPageState extends State<DashboardPage> {
 
   List<Widget> pages = [
     const HomePage(),
+    const CustomerBookings(),
+    const ProfilePage(),
     const SettingPage(),
-    const ProfilePage(),
-    const ProfilePage(),
   ];
 
   void _onItemTapped(int index) {
