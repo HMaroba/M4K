@@ -126,11 +126,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
               },
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.mail),
                 labelText: 'Email Address',
                 hintText: 'Enter email address',
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 18.0, horizontal: 16.0),
                 errorText: emailErrorText,
               ),
             ),
@@ -150,7 +147,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 }
               },
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.fingerprint_outlined),
                 labelText: 'Password',
                 hintText: 'Enter password',
                 suffixIcon: IconButton(
@@ -163,8 +159,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   },
                 ),
                 errorText: passwordErrorText,
-                contentPadding: const EdgeInsets.symmetric(
-                    vertical: 18.0, horizontal: 16.0),
               ),
             ),
             const SizedBox(height: 8.0),
@@ -185,7 +179,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   'Forgot password ?',
                   textAlign: TextAlign.right,
                   style: TextStyle(
-                    color: Colors.green,
+                    color: Colors.pink,
                     fontSize: 17.0,
                   ),
                 ),
@@ -225,7 +219,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 TextButton(
                   child: const Text(
                     'Join now',
-                    style: TextStyle(color: Colors.green, fontSize: 17.0),
+                    style: TextStyle(color: Colors.pink, fontSize: 17.0),
                   ),
                   onPressed: () {
                     Navigator.pushNamed(context, '/register');

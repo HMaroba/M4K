@@ -23,7 +23,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 76, 175, 80),
+        color: Colors.pink,
         child: const Center(
           child: Text(
             "M4K LAUNDRY SERVICES",

@@ -10,6 +10,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController locationController = TextEditingController();
   TextEditingController namesController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   bool _obscureText = true;
@@ -19,7 +20,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String? namesErrorText;
   String? phoneErrorText;
   String? countryErrorText;
-  String? selectedCountry;
+  String? locationErrorText;
   bool isLoading = false;
 
   Future<void> _register() async {
@@ -27,6 +28,7 @@ class _RegisterPageState extends State<RegisterPage> {
     String password = passwordController.text;
     String names = namesController.text;
     String phone = phoneController.text;
+    String location = locationController.text;
 
     // Validate email field
     if (email.isEmpty) {
@@ -36,6 +38,15 @@ class _RegisterPageState extends State<RegisterPage> {
     } else {
       setState(() {
         phoneErrorText = null;
+      });
+    }
+    if (location.isEmpty) {
+      setState(() {
+        locationErrorText = 'Location is required';
+      });
+    } else {
+      setState(() {
+        locationErrorText = null;
       });
     }
 
@@ -83,6 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
         passwordErrorText == null &&
         namesErrorText == null &&
         phoneErrorText == null &&
+        locationErrorText == null &&
         countryErrorText == null) {
       try {
         //start loading
@@ -119,6 +131,7 @@ class _RegisterPageState extends State<RegisterPage> {
         passwordController.clear();
         phoneController.clear();
         namesController.clear();
+        locationController.clear();
 
         setState(() {
           isLoading = false; // Stop loading
@@ -203,13 +216,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 }
               },
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.person),
                 labelText: 'Full Names',
                 hintText: 'Enter Full name',
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                ),
                 errorText: namesErrorText,
               ),
             ),
@@ -229,56 +237,28 @@ class _RegisterPageState extends State<RegisterPage> {
                 }
               },
               decoration: InputDecoration(
-                  prefixIcon: const Icon(Icons.call),
                   labelText: 'Phone Numbers',
                   hintText: 'Enter phone Number',
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                  ),
                   errorText: phoneErrorText),
             ),
             const SizedBox(height: 16.0),
-            DropdownSearch<String>(
-              popupProps: const PopupProps.menu(
-                showSelectedItems: true,
-
-                // disabledItemFn: (String s) => s.startsWith('I'),
-              ),
-              items: const [
-                "Select Country",
-                "Lesotho",
-                "South Africa",
-                // "Botswana"
-              ],
-              dropdownDecoratorProps: DropDownDecoratorProps(
-                dropdownSearchDecoration: InputDecoration(
-                  prefixIcon: Icon(Icons.location_on),
-                  labelText: "Country",
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Colors.red),
-                    borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                  ),
-                  hintText: "Select your country",
-                  errorText: countryErrorText,
-                ),
-              ),
+            TextField(
+              controller: locationController,
               onChanged: (value) {
-                setState(() {
-                  selectedCountry =
-                      value; // Update the selectedCountry variable
-                });
-                if (value == "Select Country") {
+                if (value.isEmpty) {
                   setState(() {
-                    countryErrorText = "Please select your Country";
+                    phoneErrorText = 'Location is required';
                   });
                 } else {
                   setState(() {
-                    countryErrorText == null;
+                    phoneErrorText = null;
                   });
                 }
               },
-              selectedItem: selectedCountry ?? "Select Country",
+              decoration: InputDecoration(
+                  labelText: 'Location',
+                  hintText: 'Enter your location',
+                  errorText: locationErrorText),
             ),
             const SizedBox(height: 16.0),
             TextField(
@@ -289,11 +269,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   setState(() {
                     emailErrorText = 'Email is required';
                   });
-                } else if (!EmailValidator.validate(value)) {
-                  // Check for valid email format
-                  setState(() {
-                    emailErrorText = 'Invalid email format';
-                  });
                 } else {
                   setState(() {
                     emailErrorText = null;
@@ -301,13 +276,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 }
               },
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.mail),
                 labelText: 'Email Address',
                 hintText: 'Enter email address',
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                ),
                 errorText: emailErrorText,
               ),
             ),
@@ -332,13 +302,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 }
               },
               decoration: InputDecoration(
-                prefixIcon: const Icon(Icons.fingerprint_outlined),
                 labelText: 'Password',
                 hintText: 'Enter password',
-                border: const OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.red),
-                  borderRadius: BorderRadius.all(Radius.circular(9.0)),
-                ),
                 suffixIcon: IconButton(
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
@@ -357,12 +322,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 fixedSize: MaterialStateProperty.all<Size>(
                   const Size(310, 40),
                 ),
-                // shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                //   RoundedRectangleBorder(
-                //     borderRadius:
-                //         BorderRadius.circular(20), // Set the border radius here
-                //   ),
-                // ),
               ),
               onPressed:
                   isLoading ? null : _register, // Disable button during loading
@@ -370,13 +329,6 @@ class _RegisterPageState extends State<RegisterPage> {
                   ? const Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Text(
-                        //   'Loading...',
-                        //   style: TextStyle(fontSize: 17),
-                        // ),
-                        // SizedBox(
-                        //   width: 10,
-                        // ),
                         SizedBox(
                           width: 20,
                           height: 19,
@@ -405,10 +357,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 TextButton(
                   child: const Text(
                     'Login',
-                    style: TextStyle(color: Colors.green, fontSize: 18.0),
+                    style: TextStyle(color: Colors.pink, fontSize: 18.0),
                   ),
                   onPressed: () {
-                    Navigator.pushNamed(context, '/loginpage');
+                    Navigator.pushNamed(context, '/login');
                   },
                 ),
               ],
