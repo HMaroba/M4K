@@ -68,7 +68,7 @@ class _LoginScreenState extends State<LoginScreen> {
         });
 
         // Navigate to dashboard or home screen
-        Navigator.pushNamed(context, '/dashboard');
+        Navigator.pushNamed(context, '/userdashboard');
         // }).catchError((error) {
         //   // Stop loading
         //   setState(() {
