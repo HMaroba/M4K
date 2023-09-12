@@ -10,7 +10,12 @@ class HomePage extends StatelessWidget {
         title: const Text("Home Page"),
         centerTitle: true,
       ),
-      body: const Center(child: Text("Home Page")),
+      body: Center(
+        child: Image.asset(
+          'assets/images/services.png',
+          height: 190,
+        ),
+      ),
     );
   }
 }

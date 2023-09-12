@@ -97,15 +97,15 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Image.asset(
-            //   'assets/images/user.png',
-            //   height: 150,
-            // ),
+            Image.asset(
+              'assets/images/user.png',
+              height: 150,
+            ),
             const Text(
               'Welcome Back',
               style: TextStyle(
                 fontSize: 30.0,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
               ),
               // style: Theme.of(context).textTheme.displayMedium
               //

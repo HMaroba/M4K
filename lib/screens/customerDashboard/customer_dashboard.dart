@@ -18,7 +18,7 @@ class _DashboardPageState extends State<DashboardPage> {
   List<Widget> pages = [
     const HomePage(),
     const CustomerBookings(),
-    const ProfilePage(),
+    const WatchDemo(),
     const SettingPage(),
   ];
 
@@ -35,7 +35,7 @@ class _DashboardPageState extends State<DashboardPage> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         // iconSize: 35,
-        backgroundColor: Color.fromARGB(255, 219, 127, 179),
+        // backgroundColor: Color.fromARGB(255, 212, 135, 179),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

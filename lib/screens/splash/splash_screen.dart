@@ -24,15 +24,26 @@ class _SplashScreenState extends State<SplashScreen> {
     return Scaffold(
       body: Container(
         color: Colors.pink,
-        child: const Center(
-          child: Text(
-            "M4K LAUNDRY SERVICES",
-            style: TextStyle(
-                fontSize: 25.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.white),
-          ),
-        ),
+        child: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/images/bookNow.png',
+              height: 190,
+            ),
+            const SizedBox(
+              height: 16.0,
+            ),
+            const Text(
+              "M4K LAUNDRY SERVICES",
+              style: TextStyle(
+                  fontSize: 25.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          ],
+        )),
       ),
     );
   }
