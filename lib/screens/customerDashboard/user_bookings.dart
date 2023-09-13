@@ -23,4 +23,16 @@ List<Map<String, dynamic>> bookingList = [
     'pickupdateTime': '12 SEP 2023 : 12:20PM',
     'status': 'Pending'
   },
+  {
+    'name': 'Sneakers',
+    'price': 'M20.00',
+    'pickupdateTime': '12 SEP 2023 : 12:20PM',
+    'status': 'Pending'
+  },
+  {
+    'name': 'Sneakers',
+    'price': 'M20.00',
+    'pickupdateTime': '12 SEP 2023 : 12:20PM',
+    'status': 'Pending'
+  },
 ];
