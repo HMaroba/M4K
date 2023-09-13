@@ -78,20 +78,25 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       body: Padding(
         padding: const EdgeInsets.all(27.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/user.png',
-              height: 150,
-            ),
             const Text(
               'Reset Password',
               style: TextStyle(
                 fontSize: 30.0,
                 fontWeight: FontWeight.w400,
               ),
-              // style: Theme.of(context).textTheme.displayMedium
-              //
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              'Enter your email address to recover your password',
+              style: TextStyle(
+                fontSize: 17.0,
+                fontWeight: FontWeight.w400,
+              ),
             ),
             const SizedBox(height: 60.0),
             TextField(
@@ -120,7 +125,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
             ElevatedButton(
               style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all<Size>(
-                  const Size(310, 42),
+                  const Size(330, 42),
                 ),
               ),
               onPressed: isLoading ? null : _resetPassword,
@@ -139,7 +144,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                         ),
                       ],
                     )
-                  : const Text('Submit', style: TextStyle(fontSize: 16.0)),
+                  : const Text('Recover Password',
+                      style: TextStyle(fontSize: 16.0)),
             ),
           ],
         ),
