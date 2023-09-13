@@ -1,6 +1,22 @@
 List<Map<String, dynamic>> priceList = [
-  {'name': 'Small Bucket', 'price': 'M50.00'},
-  {'name': 'Medium Bucket', 'price': 'M50.00'},
-  {'name': 'Large Bucket', 'price': 'M50.00'},
-  {'name': 'Sneakers', 'price': 'M20.00'},
+  {
+    'name': 'Small Bucket',
+    'price': 'M50.00',
+    'imagePath': 'assets/images/bucket.jpeg',
+  },
+  {
+    'name': 'Medium Bucket',
+    'price': 'M50.00',
+    'imagePath': 'assets/images/bucket.jpeg',
+  },
+  {
+    'name': 'Large Bucket',
+    'price': 'M50.00',
+    'imagePath': 'assets/images/bucket.jpeg',
+  },
+  {
+    'name': 'Sneakers',
+    'price': 'M20.00',
+    'imagePath': 'assets/images/bucket.jpeg',
+  },
 ];
