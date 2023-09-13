@@ -186,7 +186,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
               const SizedBox(height: 30.0),
               Image.asset(
                 'assets/images/user.png',
-                height: 150,
+                height: 140,
               ),
               const Text(
                 'John Doe',
@@ -201,7 +201,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 '+266 6333 8813',
                 style: TextStyle(fontSize: 15.0),
               ),
-              const SizedBox(height: 50.0),
+              const SizedBox(height: 40.0),
               TextField(
                 controller: namesController,
                 keyboardType: TextInputType.name,
