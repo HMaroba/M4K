@@ -72,33 +72,36 @@ class HomePage extends StatelessWidget {
                 'Our Services',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
               ),
-              ListView.builder(
-                shrinkWrap:
-                    true, // Ensure the ListView doesn't take more space than needed
-                itemCount: servicesList.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final item = servicesList[index];
-                  return Card(
-                    elevation: 2, // Add elevation for a card-like appearance
-                    margin:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                    child: ListTile(
-                      leading: Image.asset(
-                        item['imagePath'],
-                        width: 50,
-                        height: 50,
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis
+                      .horizontal, // Ensure the ListView doesn't take more space than needed
+                  itemCount: servicesList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    final item = servicesList[index];
+                    return Card(
+                      elevation: 2, // Add elevation for a card-like appearance
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: ListTile(
+                        leading: Image.asset(
+                          item['imagePath'],
+                          width: 50,
+                          height: 50,
+                        ),
+                        title: Text(
+                          item['name'],
+                          style: const TextStyle(fontSize: 19),
+                        ),
+                        trailing: const Icon(
+                          Icons.add,
+                          color: Colors.pink,
+                        ),
                       ),
-                      title: Text(
-                        item['name'],
-                        style: const TextStyle(fontSize: 19),
-                      ),
-                      trailing: const Icon(
-                        Icons.add,
-                        color: Colors.pink,
-                      ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
               const SizedBox(
                 height: 20,
