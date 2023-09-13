@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:m4k/screens/customerDashboard/price_list.dart';
+import 'package:m4k/screens/customerDashboard/services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -63,6 +64,33 @@ class HomePage extends StatelessWidget {
               Image.asset(
                 'assets/images/services.png',
                 height: 190,
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              const Text(
+                'Our Services',
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+              ),
+              ListView.builder(
+                shrinkWrap:
+                    true, // Ensure the ListView doesn't take more space than needed
+                itemCount: servicesList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final item = servicesList[index];
+                  return Card(
+                    elevation: 2, // Add elevation for a card-like appearance
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: ListTile(
+                      leading: const Icon(Icons.add),
+                      title: Text(
+                        item['name'],
+                        style: const TextStyle(fontSize: 19),
+                      ),
+                    ),
+                  );
+                },
               ),
               const SizedBox(
                 height: 20,
