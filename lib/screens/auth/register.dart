@@ -179,193 +179,196 @@ class _RegisterPageState extends State<RegisterPage> {
       //   centerTitle: true,
       // ),
       resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.all(27.0),
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: 150.0),
-            const Text(
-              'Create an Account!',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.w400,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(27.0),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 150.0),
+              const Text(
+                'Create an account!',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w400,
+                ),
+                // style: Theme.of(context).textTheme.displayMedium,
               ),
-              // style: Theme.of(context).textTheme.displayMedium,
-            ),
-            const SizedBox(height: 7.0),
-            const Text(
-              'Create your profile to start your journey',
-              style: TextStyle(fontSize: 15.0),
-            ),
-            const SizedBox(height: 40.0),
-            TextField(
-              controller: namesController,
-              keyboardType: TextInputType.name,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    namesErrorText = 'Full names are required';
-                  });
-                } else {
-                  setState(() {
-                    namesErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Full Names',
-                hintText: 'Enter Full name',
-                errorText: namesErrorText,
+              const SizedBox(height: 7.0),
+              const Text(
+                'Create your profile to start your journey',
+                style: TextStyle(fontSize: 15.0),
               ),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: phoneController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    phoneErrorText = 'Phone number is required';
-                  });
-                } else {
-                  setState(() {
-                    phoneErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Phone Numbers',
-                  hintText: 'Enter phone Number',
-                  errorText: phoneErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: locationController,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    phoneErrorText = 'Location is required';
-                  });
-                } else {
-                  setState(() {
-                    phoneErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Location',
-                  hintText: 'Enter your location',
-                  errorText: locationErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    emailErrorText = 'Email is required';
-                  });
-                } else {
-                  setState(() {
-                    emailErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                hintText: 'Enter email address',
-                errorText: emailErrorText,
-              ),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: passwordController,
-              obscureText: _obscureText,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    passwordErrorText = 'Password is required';
-                  });
-                } else if (value.length < 8) {
-                  setState(() {
-                    passwordErrorText =
-                        'Password should be at least 8 characters long';
-                  });
-                } else {
-                  setState(() {
-                    passwordErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Password',
-                hintText: 'Enter password',
-                suffixIcon: IconButton(
-                  icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off),
-                  onPressed: () {
+              const SizedBox(height: 40.0),
+              TextField(
+                controller: namesController,
+                keyboardType: TextInputType.name,
+                onChanged: (value) {
+                  if (value.isEmpty) {
                     setState(() {
-                      _obscureText = !_obscureText;
+                      namesErrorText = 'Full names are required';
                     });
-                  },
+                  } else {
+                    setState(() {
+                      namesErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Full Names',
+                  hintText: 'Enter Full name',
+                  errorText: namesErrorText,
                 ),
-                errorText: passwordErrorText,
               ),
-            ),
-            const SizedBox(height: 24.0),
-            ElevatedButton(
-              style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all<Size>(
-                  const Size(310, 40),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      phoneErrorText = 'Phone number is required';
+                    });
+                  } else {
+                    setState(() {
+                      phoneErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Phone Numbers',
+                    hintText: 'Enter phone Number',
+                    errorText: phoneErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: locationController,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      phoneErrorText = 'Location is required';
+                    });
+                  } else {
+                    setState(() {
+                      phoneErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Location',
+                    hintText: 'Enter your location',
+                    errorText: locationErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      emailErrorText = 'Email is required';
+                    });
+                  } else {
+                    setState(() {
+                      emailErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  hintText: 'Enter email address',
+                  errorText: emailErrorText,
                 ),
               ),
-              onPressed:
-                  isLoading ? null : _register, // Disable button during loading
-              child: isLoading
-                  ? const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 19,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
-                          ),
-                        ),
-                      ],
-                    )
-                  : const Text(
-                      'Register',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'Already have an account ?',
-                  textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 18.0),
-                ),
-                const SizedBox(width: 5),
-                TextButton(
-                  child: const Text(
-                    'Login',
-                    style: TextStyle(color: Colors.pink, fontSize: 18.0),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: passwordController,
+                obscureText: _obscureText,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      passwordErrorText = 'Password is required';
+                    });
+                  } else if (value.length < 8) {
+                    setState(() {
+                      passwordErrorText =
+                          'Password should be at least 8 characters long';
+                    });
+                  } else {
+                    setState(() {
+                      passwordErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Password',
+                  hintText: 'Enter password',
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                        _obscureText ? Icons.visibility : Icons.visibility_off),
+                    onPressed: () {
+                      setState(() {
+                        _obscureText = !_obscureText;
+                      });
+                    },
                   ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/login');
-                  },
+                  errorText: passwordErrorText,
                 ),
-              ],
-            )
-          ],
+              ),
+              const SizedBox(height: 24.0),
+              ElevatedButton(
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    const Size(310, 40),
+                  ),
+                ),
+                onPressed: isLoading
+                    ? null
+                    : _register, // Disable button during loading
+                child: isLoading
+                    ? const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            height: 19,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
+                          ),
+                        ],
+                      )
+                    : const Text(
+                        'Register',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Already have an account ?',
+                    textAlign: TextAlign.right,
+                    style: TextStyle(fontSize: 18.0),
+                  ),
+                  const SizedBox(width: 5),
+                  TextButton(
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(color: Colors.pink, fontSize: 18.0),
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/login');
+                    },
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );
