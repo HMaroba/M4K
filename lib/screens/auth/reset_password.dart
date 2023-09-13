@@ -92,7 +92,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               height: 10,
             ),
             const Text(
-              'Enter your email address to recover your password',
+              'Please enter your email address to recover your password',
               style: TextStyle(
                 fontSize: 17.0,
                 fontWeight: FontWeight.w400,

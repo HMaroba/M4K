@@ -65,15 +65,28 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                         style: const TextStyle(fontSize: 16),
                       ),
                       Text(
-                        'Pickup Date/Time: ${item['pickupdateTime']}',
+                        'Pickup DateTime: ${item['pickupdateTime']}',
                         style: const TextStyle(fontSize: 16),
                       ),
+                      Text(
+                        'Status : ${item['status']}',
+                        style:
+                            const TextStyle(fontSize: 20, color: Colors.pink),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          TextButton(
+                              onPressed: () {}, child: const Text('Edit')),
+                          TextButton(
+                              onPressed: () {}, child: const Text('Delete')),
+                        ],
+                      )
                     ],
                   ),
-                  trailing: Text(
-                    '${item['status']}',
-                    style: const TextStyle(fontSize: 20, color: Colors.pink),
-                  ),
+                  // trailing: IconButton(
+                  //     onPressed: () {}, icon: const Icon(Icons.edit)),
                 ),
               );
             },
