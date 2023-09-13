@@ -182,10 +182,10 @@ class _RegisterPageState extends State<RegisterPage> {
       body: Padding(
         padding: const EdgeInsets.all(27.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(height: 50.0),
+            const SizedBox(height: 150.0),
             const Text(
               'Create an Account!',
               textAlign: TextAlign.start,
@@ -200,7 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
               'Create your profile to start your journey',
               style: TextStyle(fontSize: 15.0),
             ),
-            const SizedBox(height: 50.0),
+            const SizedBox(height: 40.0),
             TextField(
               controller: namesController,
               keyboardType: TextInputType.name,
@@ -341,7 +341,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       ],
                     )
                   : const Text(
-                      'Register Here',
+                      'Register',
                       style: TextStyle(fontSize: 16.0),
                     ),
             ),
