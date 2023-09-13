@@ -6,12 +6,12 @@ List<Map<String, dynamic>> priceList = [
   },
   {
     'name': 'Medium Bucket',
-    'price': 'M50.00',
+    'price': 'M70.00',
     'imagePath': 'assets/images/bucket.jpeg',
   },
   {
     'name': 'Large Bucket',
-    'price': 'M50.00',
+    'price': 'M100.00',
     'imagePath': 'assets/images/bucket.jpeg',
   },
   {
