@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
 import 'package:video_player/video_player.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -169,150 +170,162 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Profile'),
-        centerTitle: true,
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.logout))],
-      ),
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(27.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 30.0),
-              Image.asset(
-                'assets/images/user.png',
-                height: 140,
-              ),
-              const Text(
-                'John Doe',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 25.0,
-                  fontWeight: FontWeight.w400,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DashboardPage()),
+        );
+        // Prevent the default back button behavior
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Profile'),
+          centerTitle: true,
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.logout))
+          ],
+        ),
+        resizeToAvoidBottomInset: false,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(27.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              // crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 30.0),
+                Image.asset(
+                  'assets/images/user.png',
+                  height: 140,
                 ),
-              ),
-              const SizedBox(height: 7.0),
-              const Text(
-                '+266 6333 8813',
-                style: TextStyle(fontSize: 15.0),
-              ),
-              const SizedBox(height: 40.0),
-              TextField(
-                controller: namesController,
-                keyboardType: TextInputType.name,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      namesErrorText = 'Full names are required';
-                    });
-                  } else {
-                    setState(() {
-                      namesErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                  labelText: 'Full Names',
-                  hintText: 'Enter Full name',
-                  errorText: namesErrorText,
-                ),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: phoneController,
-                keyboardType: TextInputType.number,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      phoneErrorText = 'Phone number is required';
-                    });
-                  } else {
-                    setState(() {
-                      phoneErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Phone Numbers',
-                    hintText: 'Enter phone Number',
-                    errorText: phoneErrorText),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: locationController,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      phoneErrorText = 'Location is required';
-                    });
-                  } else {
-                    setState(() {
-                      phoneErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Location',
-                    hintText: 'Enter your location',
-                    errorText: locationErrorText),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: emailController,
-                keyboardType: TextInputType.emailAddress,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      emailErrorText = 'Email is required';
-                    });
-                  } else {
-                    setState(() {
-                      emailErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                  labelText: 'Email Address',
-                  hintText: 'Enter email address',
-                  errorText: emailErrorText,
-                ),
-              ),
-              const SizedBox(height: 24.0),
-              ElevatedButton(
-                style: ButtonStyle(
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    const Size(310, 40),
+                const Text(
+                  'John Doe',
+                  textAlign: TextAlign.start,
+                  style: TextStyle(
+                    fontSize: 25.0,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
-                onPressed: isLoading
-                    ? null
-                    : _register, // Disable button during loading
-                child: isLoading
-                    ? const Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            width: 20,
-                            height: 19,
-                            child: CircularProgressIndicator(
-                              strokeWidth: 2,
-                              valueColor:
-                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                const SizedBox(height: 7.0),
+                const Text(
+                  '+266 6333 8813',
+                  style: TextStyle(fontSize: 15.0),
+                ),
+                const SizedBox(height: 40.0),
+                TextField(
+                  controller: namesController,
+                  keyboardType: TextInputType.name,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      setState(() {
+                        namesErrorText = 'Full names are required';
+                      });
+                    } else {
+                      setState(() {
+                        namesErrorText = null;
+                      });
+                    }
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Full Names',
+                    hintText: 'Enter Full name',
+                    errorText: namesErrorText,
+                  ),
+                ),
+                const SizedBox(height: 16.0),
+                TextField(
+                  controller: phoneController,
+                  keyboardType: TextInputType.number,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      setState(() {
+                        phoneErrorText = 'Phone number is required';
+                      });
+                    } else {
+                      setState(() {
+                        phoneErrorText = null;
+                      });
+                    }
+                  },
+                  decoration: InputDecoration(
+                      labelText: 'Phone Numbers',
+                      hintText: 'Enter phone Number',
+                      errorText: phoneErrorText),
+                ),
+                const SizedBox(height: 16.0),
+                TextField(
+                  controller: locationController,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      setState(() {
+                        phoneErrorText = 'Location is required';
+                      });
+                    } else {
+                      setState(() {
+                        phoneErrorText = null;
+                      });
+                    }
+                  },
+                  decoration: InputDecoration(
+                      labelText: 'Location',
+                      hintText: 'Enter your location',
+                      errorText: locationErrorText),
+                ),
+                const SizedBox(height: 16.0),
+                TextField(
+                  controller: emailController,
+                  keyboardType: TextInputType.emailAddress,
+                  onChanged: (value) {
+                    if (value.isEmpty) {
+                      setState(() {
+                        emailErrorText = 'Email is required';
+                      });
+                    } else {
+                      setState(() {
+                        emailErrorText = null;
+                      });
+                    }
+                  },
+                  decoration: InputDecoration(
+                    labelText: 'Email Address',
+                    hintText: 'Enter email address',
+                    errorText: emailErrorText,
+                  ),
+                ),
+                const SizedBox(height: 24.0),
+                ElevatedButton(
+                  style: ButtonStyle(
+                    fixedSize: MaterialStateProperty.all<Size>(
+                      const Size(310, 40),
+                    ),
+                  ),
+                  onPressed: isLoading
+                      ? null
+                      : _register, // Disable button during loading
+                  child: isLoading
+                      ? const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            SizedBox(
+                              width: 20,
+                              height: 19,
+                              child: CircularProgressIndicator(
+                                strokeWidth: 2,
+                                valueColor:
+                                    AlwaysStoppedAnimation<Color>(Colors.white),
+                              ),
                             ),
-                          ),
-                        ],
-                      )
-                    : const Text(
-                        'Update',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-              ),
-            ],
+                          ],
+                        )
+                      : const Text(
+                          'Update',
+                          style: TextStyle(fontSize: 16.0),
+                        ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -361,49 +374,59 @@ class _WatchDemoState extends State<WatchDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Our Solution Demo'),
-      ),
-      // Use a FutureBuilder to display a loading spinner while waiting for the
-      // VideoPlayerController to finish initializing.
-      body: FutureBuilder(
-        future: _initializeVideoPlayerFuture,
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.done) {
-            // If the VideoPlayerController has finished initialization, use
-            // the data it provides to limit the aspect ratio of the video.
-            return AspectRatio(
-              aspectRatio: _controller.value.aspectRatio,
-              // Use the VideoPlayer widget to display the video.
-              child: VideoPlayer(_controller),
-            );
-          } else {
-            // If the VideoPlayerController is still initializing, show a
-            // loading spinner.
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Wrap the play or pause in a call to `setState`. This ensures the
-          // correct icon is shown.
-          setState(() {
-            // If the video is playing, pause it.
-            if (_controller.value.isPlaying) {
-              _controller.pause();
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DashboardPage()),
+        );
+        // Prevent the default back button behavior
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Our Solution Demo'),
+        ),
+        // Use a FutureBuilder to display a loading spinner while waiting for the
+        // VideoPlayerController to finish initializing.
+        body: FutureBuilder(
+          future: _initializeVideoPlayerFuture,
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.done) {
+              // If the VideoPlayerController has finished initialization, use
+              // the data it provides to limit the aspect ratio of the video.
+              return AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                // Use the VideoPlayer widget to display the video.
+                child: VideoPlayer(_controller),
+              );
             } else {
-              // If the video is paused, play it.
-              _controller.play();
+              // If the VideoPlayerController is still initializing, show a
+              // loading spinner.
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
             }
-          });
-        },
-        // Display the correct icon depending on the state of the player.
-        child: Icon(
-          _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          },
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            // Wrap the play or pause in a call to `setState`. This ensures the
+            // correct icon is shown.
+            setState(() {
+              // If the video is playing, pause it.
+              if (_controller.value.isPlaying) {
+                _controller.pause();
+              } else {
+                // If the video is paused, play it.
+                _controller.play();
+              }
+            });
+          },
+          // Display the correct icon depending on the state of the player.
+          child: Icon(
+            _controller.value.isPlaying ? Icons.pause : Icons.play_arrow,
+          ),
         ),
       ),
     );
