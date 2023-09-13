@@ -50,7 +50,7 @@ class SettingPage extends StatelessWidget {
                       "About",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                   ListTile(
                     leading: Icon(
@@ -62,7 +62,7 @@ class SettingPage extends StatelessWidget {
                       "Contact Us",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                   ListTile(
                     leading: Icon(
@@ -74,7 +74,7 @@ class SettingPage extends StatelessWidget {
                       "Payments",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                   ListTile(
                     leading: Icon(
@@ -86,7 +86,7 @@ class SettingPage extends StatelessWidget {
                       "My Rewards",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                   ListTile(
                     leading: Icon(
@@ -98,7 +98,7 @@ class SettingPage extends StatelessWidget {
                       "Feedback",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   ),
                   ListTile(
                     leading: Icon(
@@ -110,7 +110,7 @@ class SettingPage extends StatelessWidget {
                       "Logout",
                       style: TextStyle(fontSize: 19),
                     ),
-                    trailing: Icon(Icons.arrow_forward),
+                    trailing: Icon(Icons.arrow_forward_ios),
                   )
                 ],
               ),
