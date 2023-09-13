@@ -321,7 +321,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ElevatedButton(
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all<Size>(
-                    const Size(310, 40),
+                    const Size(350, 40),
                   ),
                 ),
                 onPressed: isLoading
