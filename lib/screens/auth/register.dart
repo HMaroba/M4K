@@ -191,7 +191,7 @@ class _RegisterPageState extends State<RegisterPage> {
               textAlign: TextAlign.start,
               style: TextStyle(
                 fontSize: 30.0,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
               ),
               // style: Theme.of(context).textTheme.displayMedium,
             ),

@@ -19,6 +19,7 @@ class _DashboardPageState extends State<DashboardPage> {
     const HomePage(),
     const CustomerBookings(),
     const WatchDemo(),
+    const UserProfileScreen(),
     const SettingPage(),
   ];
 
@@ -48,7 +49,12 @@ class _DashboardPageState extends State<DashboardPage> {
             backgroundColor: Colors.pink,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.verified_user),
+            icon: Icon(Icons.video_call),
+            label: 'Demo',
+            backgroundColor: Colors.pink,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person),
             label: 'Profile',
             backgroundColor: Colors.pink,
           ),

@@ -172,163 +172,165 @@ class _BookingScreenState extends State<BookingScreen> {
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.all(27.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/laundry.webp',
-              height: 150,
-            ),
-            const SizedBox(height: 30.0),
-            const Text(
-              'Book Now!',
-              textAlign: TextAlign.start,
-              style: TextStyle(
-                fontSize: 30.0,
-                fontWeight: FontWeight.w500,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(27.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/images/book.png',
+                height: 150,
               ),
-              // style: Theme.of(context).textTheme.displayMedium,
-            ),
-            const SizedBox(height: 7.0),
-            const Text(
-              'We will respond to you shortly',
-              style: TextStyle(fontSize: 15.0),
-            ),
-            const SizedBox(height: 50.0),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: phoneController,
-              keyboardType: TextInputType.number,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    phoneErrorText = 'Phone number is required';
-                  });
-                } else {
-                  setState(() {
-                    phoneErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Phone Numbers',
-                  hintText: 'Enter phone Number',
-                  errorText: phoneErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: locationController,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    phoneErrorText = 'Location is required';
-                  });
-                } else {
-                  setState(() {
-                    phoneErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Location',
-                  hintText: 'Enter your location',
-                  errorText: locationErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: dateController,
-              keyboardType: TextInputType.datetime,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    dateErrorText = 'Pick up date is required';
-                  });
-                } else {
-                  setState(() {
-                    dateErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Pickup date',
-                  hintText: 'Enter your pick up date',
-                  errorText: dateErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: timeController,
-              keyboardType: TextInputType.datetime,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    timeErrorText = 'Time is required';
-                  });
-                } else {
-                  setState(() {
-                    timeErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                  labelText: 'Pick up time',
-                  hintText: 'Enter pick up time',
-                  errorText: timeErrorText),
-            ),
-            const SizedBox(height: 16.0),
-            TextField(
-              controller: emailController,
-              keyboardType: TextInputType.emailAddress,
-              onChanged: (value) {
-                if (value.isEmpty) {
-                  setState(() {
-                    emailErrorText = 'Email is required';
-                  });
-                } else {
-                  setState(() {
-                    emailErrorText = null;
-                  });
-                }
-              },
-              decoration: InputDecoration(
-                labelText: 'Email Address',
-                hintText: 'Enter email address',
-                errorText: emailErrorText,
+              const SizedBox(height: 20.0),
+              const Text(
+                'Book Now!',
+                textAlign: TextAlign.start,
+                style: TextStyle(
+                  fontSize: 30.0,
+                  fontWeight: FontWeight.w400,
+                ),
+                // style: Theme.of(context).textTheme.displayMedium,
               ),
-            ),
-            const SizedBox(height: 16.0),
-            const SizedBox(height: 24.0),
-            ElevatedButton(
-              style: ButtonStyle(
-                fixedSize: MaterialStateProperty.all<Size>(
-                  const Size(310, 40),
+              const SizedBox(height: 7.0),
+              const Text(
+                'We will respond to you shortly',
+                style: TextStyle(fontSize: 15.0),
+              ),
+              const SizedBox(height: 30.0),
+              TextField(
+                controller: phoneController,
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      phoneErrorText = 'Phone number is required';
+                    });
+                  } else {
+                    setState(() {
+                      phoneErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Phone Numbers',
+                    hintText: 'Enter phone Number',
+                    errorText: phoneErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: locationController,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      phoneErrorText = 'Location is required';
+                    });
+                  } else {
+                    setState(() {
+                      phoneErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Location',
+                    hintText: 'Enter your location',
+                    errorText: locationErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: dateController,
+                keyboardType: TextInputType.datetime,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      dateErrorText = 'Pick up date is required';
+                    });
+                  } else {
+                    setState(() {
+                      dateErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Pickup date',
+                    hintText: 'Enter your pick up date',
+                    errorText: dateErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: timeController,
+                keyboardType: TextInputType.datetime,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      timeErrorText = 'Time is required';
+                    });
+                  } else {
+                    setState(() {
+                      timeErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Pick up time',
+                    hintText: 'Enter pick up time',
+                    errorText: timeErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      emailErrorText = 'Email is required';
+                    });
+                  } else {
+                    setState(() {
+                      emailErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Email Address',
+                  hintText: 'Enter email address',
+                  errorText: emailErrorText,
                 ),
               ),
-              onPressed:
-                  isLoading ? null : _register, // Disable button during loading
-              child: isLoading
-                  ? const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SizedBox(
-                          width: 20,
-                          height: 19,
-                          child: CircularProgressIndicator(
-                            strokeWidth: 2,
-                            valueColor:
-                                AlwaysStoppedAnimation<Color>(Colors.white),
+              const SizedBox(height: 16.0),
+              const SizedBox(height: 24.0),
+              ElevatedButton(
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    const Size(310, 40),
+                  ),
+                ),
+                onPressed: isLoading
+                    ? null
+                    : _register, // Disable button during loading
+                child: isLoading
+                    ? const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          SizedBox(
+                            width: 20,
+                            height: 19,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              valueColor:
+                                  AlwaysStoppedAnimation<Color>(Colors.white),
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  : const Text(
-                      'Submit',
-                      style: TextStyle(fontSize: 16.0),
-                    ),
-            ),
-          ],
+                        ],
+                      )
+                    : const Text(
+                        'Submit',
+                        style: TextStyle(fontSize: 16.0),
+                      ),
+              ),
+            ],
+          ),
         ),
       ),
     );

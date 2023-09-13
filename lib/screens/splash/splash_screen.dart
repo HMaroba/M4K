@@ -30,10 +30,10 @@ class _SplashScreenState extends State<SplashScreen> {
           children: [
             Image.asset(
               'assets/images/bookNow.png',
-              height: 190,
+              height: 200,
             ),
             const SizedBox(
-              height: 16.0,
+              height: 35.0,
             ),
             const Text(
               "M4K LAUNDRY SERVICES",
