@@ -41,19 +41,7 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                     item['name'],
                     style: const TextStyle(fontSize: 19),
                   ),
-                  // subtitle: Column(
-                  //   mainAxisAlignment: MainAxisAlignment.start,
-                  //   children: [
-                  //     Text(
-                  //       'Price: ${item['price']}',
-                  //       style: const TextStyle(fontSize: 16),
-                  //     ),
-                  //     Text(
-                  //       'DateTime: ${item['pickupdateTime']}',
-                  //       style: const TextStyle(fontSize: 16),
-                  //     ),
-                  //   ],
-                  // ),
+
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -78,9 +66,18 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextButton(
-                              onPressed: () {}, child: const Text('Edit')),
+                              onPressed: () {},
+                              child: const Text(
+                                'Edit',
+                                style: TextStyle(fontSize: 17),
+                              )),
                           TextButton(
-                              onPressed: () {}, child: const Text('Delete')),
+                              onPressed: () {},
+                              child: const Text(
+                                'Delete',
+                                style:
+                                    TextStyle(color: Colors.red, fontSize: 17),
+                              )),
                         ],
                       )
                     ],

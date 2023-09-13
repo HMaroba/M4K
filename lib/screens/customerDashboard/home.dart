@@ -83,19 +83,36 @@ class HomePage extends StatelessWidget {
                     margin:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     child: ListTile(
-                      leading: Image.asset(
-                        item['imagePath'],
-                        width: 50,
-                        height: 50,
+                      // leading:
+                      // title: Text(
+                      //   item['name'],
+                      //   style: const TextStyle(fontSize: 19),
+                      // ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 100,
+                            child: Image.asset(
+                              item['imagePath'],
+                              // width: 50,
+                              height: 100,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 16,
+                          ),
+                          Text(
+                            item['name'],
+                            style: const TextStyle(fontSize: 20),
+                          ),
+                        ],
                       ),
-                      title: Text(
-                        item['name'],
-                        style: const TextStyle(fontSize: 19),
-                      ),
-                      trailing: const Icon(
-                        Icons.add,
-                        color: Colors.pink,
-                      ),
+                      // trailing: const Icon(
+                      //   Icons.add,
+                      //   color: Colors.pink,
+                      // ),
                     ),
                   );
                 },

@@ -1,19 +1,19 @@
 List<Map<String, dynamic>> servicesList = [
   {
     'name': 'Wash',
-    'imagePath': 'assets/images/bucket.jpeg',
+    'imagePath': 'assets/images/professional.jpg',
   },
   {
     'name': 'Dry',
-    'imagePath': 'assets/images/bucket.jpeg',
+    'imagePath': 'assets/images/professional.jpg',
   },
   {
     'name': 'Fold',
-    'imagePath': 'assets/images/bucket.jpeg',
+    'imagePath': 'assets/images/professional.jpg',
   },
   {
     'name': 'Iron',
-    'imagePath': 'assets/images/bucket.jpeg',
+    'imagePath': 'assets/images/professional.jpg',
   },
   {
     'name': 'Pickup and Delivery',
