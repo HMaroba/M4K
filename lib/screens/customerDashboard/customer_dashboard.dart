@@ -44,7 +44,7 @@ class _DashboardPageState extends State<DashboardPage> {
             backgroundColor: Colors.pink,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
+            icon: Icon(Icons.dashboard),
             label: 'Bookings',
             backgroundColor: Colors.pink,
           ),

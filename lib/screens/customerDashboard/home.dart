@@ -19,7 +19,7 @@ class HomePage extends StatelessWidget {
             children: [
               Container(
                 width: double.infinity,
-                height: 150,
+                height: 130,
                 decoration: const ShapeDecoration(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.only(
