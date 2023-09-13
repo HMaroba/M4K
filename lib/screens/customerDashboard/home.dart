@@ -83,10 +83,18 @@ class HomePage extends StatelessWidget {
                     margin:
                         const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                     child: ListTile(
-                      leading: const Icon(Icons.add),
+                      leading: Image.asset(
+                        item['imagePath'],
+                        width: 50,
+                        height: 50,
+                      ),
                       title: Text(
                         item['name'],
                         style: const TextStyle(fontSize: 19),
+                      ),
+                      trailing: const Icon(
+                        Icons.add,
+                        color: Colors.pink,
                       ),
                     ),
                   );
