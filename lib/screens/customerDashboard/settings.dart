@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'customer_dashboard.dart';
 
 class SettingPage extends StatelessWidget {
-  const SettingPage({super.key});
+  const SettingPage({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,83 +17,104 @@ class SettingPage extends StatelessWidget {
         return false;
       },
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text("Settings"),
-        ),
+        // appBar: AppBar(
+        //   title: const Text("Settings"),
+        // ),
         body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ListView(
-              children: const [
-                ListTile(
-                  leading: Icon(
-                    Icons.info,
-                    size: 30,
-                    color: Colors.pink,
-                  ),
-                  title: Text(
-                    "About",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.email,
-                    size: 30,
-                    color: Colors.pink,
-                  ),
-                  title: Text(
-                    "Contact Us",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.wallet,
-                    size: 30,
-                    color: Colors.pink,
-                  ),
-                  title: Text(
-                    "Payments",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.wallet_giftcard_outlined,
-                    size: 30,
-                    color: Colors.pink,
-                  ),
-                  title: Text(
-                    "My Rewards",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                ),
-                ListTile(
-                  leading: Icon(
-                    Icons.logout,
-                    size: 30,
-                    color: Colors.pink,
-                  ),
-                  title: Text(
-                    "Logout",
-                    style: TextStyle(fontSize: 19),
-                  ),
-                  trailing: Icon(Icons.arrow_forward),
-                )
-              ],
-            ),
             const SizedBox(
-              height: 34,
+              height: 60,
             ),
-            const Text(
-              'Feedback',
-              style: TextStyle(fontWeight: FontWeight.w400, fontSize: 27),
-            )
+            Container(
+              padding: const EdgeInsets.all(16),
+              child: const Text(
+                'Settings',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.pink),
+              ),
+            ),
+            Expanded(
+              // Wrap the ListView in an Expanded widget
+              child: ListView(
+                children: const [
+                  ListTile(
+                    leading: Icon(
+                      Icons.info,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "About",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.email,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "Contact Us",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.wallet,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "Payments",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.wallet_giftcard_outlined,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "My Rewards",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.feedback,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "Feedback",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  ),
+                  ListTile(
+                    leading: Icon(
+                      Icons.logout,
+                      size: 30,
+                      color: Colors.pink,
+                    ),
+                    title: Text(
+                      "Logout",
+                      style: TextStyle(fontSize: 19),
+                    ),
+                    trailing: Icon(Icons.arrow_forward),
+                  )
+                ],
+              ),
+            ),
           ],
         ),
       ),
