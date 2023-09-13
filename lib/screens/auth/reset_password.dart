@@ -115,7 +115,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
               ),
             ),
             const SizedBox(
-              height: 20,
+              height: 30,
             ),
             ElevatedButton(
               style: ButtonStyle(
