@@ -104,6 +104,7 @@ class _HomePageState extends State<HomePage> {
               padding: const EdgeInsets.all(2),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(
                     height: 50,
@@ -115,13 +116,19 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Our Services',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      left: 16,
+                    ),
+                    child: Text(
+                      'Our Services',
+                      style:
+                          TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
+                    ),
                   ),
                   CarouselSlider.builder(
                     options: CarouselOptions(
-                      height: 176.0,
+                      height: 300.0,
                       enableInfiniteScroll: true,
                       viewportFraction: 0.9,
                       autoPlay: true,
@@ -151,15 +158,15 @@ class _HomePageState extends State<HomePage> {
                             Image.asset(
                               item['imagePath'],
                             ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(
-                            //       left: 8, top: 16, bottom: 5),
-                            //   child: Text(
-                            //     item['name'],
-                            //     style: const TextStyle(
-                            //         fontSize: 23, fontWeight: FontWeight.w400),
-                            //   ),
-                            // )
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                  left: 8, top: 16, bottom: 5),
+                              child: Text(
+                                item['name'],
+                                style: const TextStyle(
+                                    fontSize: 23, fontWeight: FontWeight.w400),
+                              ),
+                            )
                           ],
                         ),
                       );
@@ -168,9 +175,15 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Text(
-                    'Our Prices',
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                  const Padding(
+                    padding: EdgeInsets.only(
+                      left: 16,
+                    ),
+                    child: Text(
+                      'Our Prices',
+                      style:
+                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                    ),
                   ),
                   CarouselSlider.builder(
                     options: CarouselOptions(
