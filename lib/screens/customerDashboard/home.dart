@@ -188,7 +188,7 @@ class HomePage extends StatelessWidget {
                   },
                   scrollDirection: Axis.horizontal,
                 ),
-                itemCount: 3, // Number of items in your carousel (updated to 3)
+                itemCount: 4, // Number of items in your carousel (updated to 3)
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   if (index == 0) {
                     return Card(
@@ -199,13 +199,13 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/professional.jpg',
+                            'assets/images/washing2.png',
                           ),
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Wash, Dry, Iron and Fold',
+                              'Washing',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -221,13 +221,35 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/book.png',
+                            'assets/images/professional.jpg',
                           ),
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Pick up and Delivery',
+                              'Ironing',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  } else if (index == 2) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/wash.jpg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Folding',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -243,13 +265,13 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/machine.jpg',
+                            'assets/images/book.png',
                           ),
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Iron and Fold',
+                              'Pick up and Delivery',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -269,9 +291,9 @@ class HomePage extends StatelessWidget {
               ),
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 250.0,
+                  height: 200.0,
                   enableInfiniteScroll: true,
-                  viewportFraction: 0.6,
+                  viewportFraction: 0.9,
                   autoPlay: true,
                   enlargeCenterPage: true,
                   autoPlayInterval: Duration(seconds: 4),
@@ -284,7 +306,7 @@ class HomePage extends StatelessWidget {
                   },
                   scrollDirection: Axis.horizontal,
                 ),
-                itemCount: 3, // Number of items in your carousel (updated to 3)
+                itemCount: 4, // Number of items in your carousel (updated to 3)
                 itemBuilder: (BuildContext context, int index, int realIndex) {
                   if (index == 0) {
                     return Card(
@@ -295,13 +317,13 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/basket.jpg',
+                            'assets/images/baket.jpg',
                           ),
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Wash, Dry, Iron and Fold',
+                              'Small : M50',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -323,7 +345,29 @@ class HomePage extends StatelessWidget {
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Pick up and Delivery',
+                              'Medium : M70.00',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  } else if (index == 1) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/baket.jpeg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Large : M100.00',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -339,13 +383,13 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/book.png',
+                            'assets/images/sne.jpg',
                           ),
                           const Padding(
                             padding:
                                 EdgeInsets.only(left: 8, top: 8, bottom: 5),
                             child: Text(
-                              'Pick up and Delivery',
+                              'Sneakers : M20.00',
                               style: TextStyle(fontSize: 20),
                             ),
                           )
@@ -356,113 +400,113 @@ class HomePage extends StatelessWidget {
                 },
               ),
 
-              Row(
-                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: 150,
-                    child: Card(
-                      elevation: 2, // Add elevation for a card-like appearance
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/bucket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Small Bucket : M50',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 150,
-                    child: Card(
-                      elevation: 2, // Add elevation for a card-like appearance
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/bucket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Medium Bucket : M70',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 150,
-                    child: Card(
-                      elevation: 2, // Add elevation for a card-like appearance
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/bucket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Large Bucket :  M100.00',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: 150,
-                    child: Card(
-                      elevation: 2, // Add elevation for a card-like appearance
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/bucket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Sneakers : LSL 20',
-                              style: TextStyle(fontSize: 16),
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     SizedBox(
+              //       width: 150,
+              //       child: Card(
+              //         elevation: 2, // Add elevation for a card-like appearance
+              //         margin: const EdgeInsets.symmetric(
+              //             vertical: 8, horizontal: 16),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Image.asset(
+              //               'assets/images/bucket.jpeg',
+              //             ),
+              //             const Padding(
+              //               padding:
+              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //               child: Text(
+              //                 'Small Bucket : M50',
+              //                 style: TextStyle(fontSize: 16),
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 150,
+              //       child: Card(
+              //         elevation: 2, // Add elevation for a card-like appearance
+              //         margin: const EdgeInsets.symmetric(
+              //             vertical: 8, horizontal: 16),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Image.asset(
+              //               'assets/images/bucket.jpeg',
+              //             ),
+              //             const Padding(
+              //               padding:
+              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //               child: Text(
+              //                 'Medium Bucket : M70',
+              //                 style: TextStyle(fontSize: 16),
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Container(
+              //       width: 150,
+              //       child: Card(
+              //         elevation: 2, // Add elevation for a card-like appearance
+              //         margin: const EdgeInsets.symmetric(
+              //             vertical: 8, horizontal: 16),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Image.asset(
+              //               'assets/images/bucket.jpeg',
+              //             ),
+              //             const Padding(
+              //               padding:
+              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //               child: Text(
+              //                 'Large Bucket :  M100.00',
+              //                 style: TextStyle(fontSize: 16),
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //     Container(
+              //       width: 150,
+              //       child: Card(
+              //         elevation: 2, // Add elevation for a card-like appearance
+              //         margin: const EdgeInsets.symmetric(
+              //             vertical: 8, horizontal: 16),
+              //         child: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             Image.asset(
+              //               'assets/images/bucket.jpeg',
+              //             ),
+              //             const Padding(
+              //               padding:
+              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //               child: Text(
+              //                 'Sneakers : LSL 20',
+              //                 style: TextStyle(fontSize: 16),
+              //               ),
+              //             )
+              //           ],
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               // ListView.builder(
               //   shrinkWrap:
               //       true, // Ensure the ListView doesn't take more space than needed
