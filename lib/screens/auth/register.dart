@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -101,27 +104,27 @@ class _RegisterPageState extends State<RegisterPage> {
         setState(() {
           isLoading = true;
         });
-        // // Create user with email and password
-        // UserCredential userCredential =
-        //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        //   email: email,
-        //   password: password,
-        // );
+        // Create user with email and password
+        UserCredential userCredential =
+            await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: email,
+          password: password,
+        );
 
         // Get the newly created user's ID
-        // String userId = userCredential.user!.uid;
-        // print(userId);
+        String userId = userCredential.user!.uid;
+        print(userId);
         //Create a map of the data you want to send
 
-        // Map<String, dynamic> userData = {
-        //   'email': email,
-        //   'names': names,
-        //   'phone': selectedCountry == "Lesotho" ? "+266$phone" : "+27$phone",
-        //   'country': selectedCountry,
-        //   'userId': userId,
-        // };
+        Map<String, dynamic> userData = {
+          'email': email,
+          'names': names,
+          'phone': "+266$phone",
+          'location': location,
+          'userId': userId,
+        };
         // Send the data to Firestore
-        // await FirebaseFirestore.instance.collection('users').add(userData);
+        await FirebaseFirestore.instance.collection('customers').add(userData);
 
         // // Subscribe the user to the topic
         // FirebaseMessaging.instance.subscribeToTopic('all_users');
@@ -137,16 +140,16 @@ class _RegisterPageState extends State<RegisterPage> {
           isLoading = false; // Stop loading
         });
 
-        // Fluttertoast.showToast(
-        //   msg: "Account created Sucessfully",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.green, // Text color of the toast message
-        // );
+        Fluttertoast.showToast(
+          msg: "Account created Sucessfully",
+          toastLength: Toast
+              .LENGTH_SHORT, // Duration for which the toast will be visible
+          gravity: ToastGravity
+              .CENTER, // Position of the toast message on the screen
+          backgroundColor:
+              Colors.black54, // Background color of the toast message
+          textColor: Colors.green, // Text color of the toast message
+        );
         // Navigate to login
         Navigator.pushNamed(context, '/loginpage');
       } catch (e) {
@@ -157,16 +160,16 @@ class _RegisterPageState extends State<RegisterPage> {
         });
 
         print('Error submitting data: $e');
-        // Fluttertoast.showToast(
-        //   msg: "Something went wrong please try again",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.red, // Text color of the toast message
-        // );
+        Fluttertoast.showToast(
+          msg: "Something went wrong please try again",
+          toastLength: Toast
+              .LENGTH_SHORT, // Duration for which the toast will be visible
+          gravity: ToastGravity
+              .CENTER, // Position of the toast message on the screen
+          backgroundColor:
+              Colors.black54, // Background color of the toast message
+          textColor: Colors.red, // Text color of the toast message
+        );
       }
     }
   }

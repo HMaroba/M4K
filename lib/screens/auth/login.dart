@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -51,36 +52,36 @@ class _LoginScreenState extends State<LoginScreen> {
           isLoading = true;
         });
 
-        // FirebaseAuth.instance
-        //     .signInWithEmailAndPassword(
-        //   email: email,
-        //   password: password,
-        // )
-        //     .then((userCredential) {
-        // Clear fields
-        emailController.clear();
-        passwordController.clear();
+        FirebaseAuth.instance
+            .signInWithEmailAndPassword(
+          email: email,
+          password: password,
+        )
+            .then((userCredential) {
+          // Clear fields
+          emailController.clear();
+          passwordController.clear();
 
-        Future.delayed(const Duration(seconds: 3), () {
+          Future.delayed(const Duration(seconds: 3), () {
+            setState(() {
+              isLoading = false;
+            });
+          });
+
+          // Navigate to dashboard or home screen
+          Navigator.pushNamed(context, '/userdashboard');
+        }).catchError((error) {
+          // Stop loading
           setState(() {
             isLoading = false;
           });
+          // Handle login errors
+          setState(() {
+            loginErrorText =
+                'Incorrect email or password'; // Set login error message
+          });
+          print('Login error: $error');
         });
-
-        // Navigate to dashboard or home screen
-        Navigator.pushNamed(context, '/userdashboard');
-        // }).catchError((error) {
-        //   // Stop loading
-        //   setState(() {
-        //     isLoading = false;
-        //   });
-        //   // Handle login errors
-        //   setState(() {
-        //     loginErrorText =
-        //         'Incorrect email or password'; // Set login error message
-        //   });
-        //   print('Login error: $error');
-        // });
       } catch (e) {
         // Handle any other errors that occur during login
         print('Error occurred during login: $e');

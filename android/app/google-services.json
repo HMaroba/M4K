@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "674856447952",
+    "project_id": "m4k-laundry",
+    "storage_bucket": "m4k-laundry.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674856447952:android:997ec43b24b7e61bb513d5",
+        "android_client_info": {
+          "package_name": "com.example.m4k"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFZcSiM4DNYoNsu6eL-ejBJZWF8qOcaa0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
