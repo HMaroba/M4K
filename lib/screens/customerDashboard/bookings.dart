@@ -258,7 +258,7 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                                   _showDeleteConfirmationDialog(bookingId);
                                 },
                                 child: const Text(
-                                  'Cancel Booking',
+                                  'Cancel',
                                   style: TextStyle(
                                       color: Colors.red, fontSize: 17),
                                 ),
