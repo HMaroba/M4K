@@ -43,6 +43,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   String? countryErrorText;
   String? locationErrorText;
   bool isLoading = false;
+  String userfullname = 'John Doe';
+  String phoneNumber = '+266 78901234';
 
   // Using Email to fetch Data
   Future<void> fetchUserData() async {
@@ -60,6 +62,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         emailController.text = userData['email'] ?? '';
         phoneController.text = userData['phone'] ?? '';
         locationController.text = userData['location'] ?? '';
+
+        setState(() {
+          userfullname = userData['names'] ?? 'John Doe';
+          phoneNumber = userData['phone'] ?? '+266 78123412';
+        });
       }
     } catch (e) {
       print('Error fetching user data: $e');
@@ -244,17 +251,17 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   'assets/images/user.png',
                   height: 140,
                 ),
-                const Text(
-                  'John Doe',
+                Text(
+                  userfullname,
                   textAlign: TextAlign.start,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 25.0,
                     fontWeight: FontWeight.w400,
                   ),
                 ),
                 const SizedBox(height: 7.0),
-                const Text(
-                  '+266 6333 8813',
+                Text(
+                  phoneNumber,
                   style: TextStyle(fontSize: 15.0),
                 ),
                 const SizedBox(height: 40.0),
