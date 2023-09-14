@@ -23,9 +23,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          primarySwatch: Colors.pink,
-          // fontFamily: 'Georgia',
-          fontFamily: 'OpenSans'),
+        primarySwatch: Colors.pink,
+        fontFamily: 'Georgia',
+        // fontFamily: 'OpenSans'
+      ),
       initialRoute: '/',
       routes: {
         '/': (context) => const SplashScreen(),

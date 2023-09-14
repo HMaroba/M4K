@@ -44,7 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
     }
     if (location.isEmpty) {
       setState(() {
-        locationErrorText = 'Location is required';
+        locationErrorText = 'Address is required';
       });
     } else {
       setState(() {
@@ -249,17 +249,17 @@ class _RegisterPageState extends State<RegisterPage> {
                 onChanged: (value) {
                   if (value.isEmpty) {
                     setState(() {
-                      phoneErrorText = 'Location is required';
+                      locationErrorText = 'Address is required';
                     });
                   } else {
                     setState(() {
-                      phoneErrorText = null;
+                      locationErrorText = null;
                     });
                   }
                 },
                 decoration: InputDecoration(
-                    labelText: 'Location',
-                    hintText: 'Enter your location',
+                    labelText: 'Address',
+                    hintText: 'Enter your address',
                     errorText: locationErrorText),
               ),
               const SizedBox(height: 16.0),

@@ -59,6 +59,24 @@ class _BookingScreenState extends State<BookingScreen> {
     );
   }
 
+  Future<void> _selectDelivryDate(BuildContext context) async {
+    DatePickerBdaya.showDatePicker(
+      context,
+      showTitleActions: true,
+      minTime: DateTime.now(),
+      maxTime: DateTime.now().add(Duration(days: 365)),
+      onChanged: (date) {
+        // Do nothing on date change
+      },
+      onConfirm: (date) {
+        setState(() {
+          deliverydateController.text = DateFormat('yyyy-MM-dd').format(date);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
+
   Future<void> _selectTime(BuildContext context) async {
     DatePickerBdaya.showTimePicker(
       context,
@@ -69,6 +87,21 @@ class _BookingScreenState extends State<BookingScreen> {
       onConfirm: (time) {
         setState(() {
           timeController.text = DateFormat('HH:mm').format(time);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
+
+  Future<void> _selectDeliveryTime(BuildContext context) async {
+    DatePickerBdaya.showTimePicker(
+      context,
+      showTitleActions: true,
+      onChanged: (time) {
+        // Do nothing on time change
+      },
+      onConfirm: (time) {
+        setState(() {
           deliverytimeController.text = DateFormat('HH:mm').format(time);
         });
       },
@@ -354,7 +387,7 @@ class _BookingScreenState extends State<BookingScreen> {
                 'Personal Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: phoneController,
                 keyboardType: TextInputType.number,
@@ -396,12 +429,12 @@ class _BookingScreenState extends State<BookingScreen> {
                   errorText: emailErrorText,
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 22.0),
               const Text(
                 'Personal Address ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: locationController,
                 onChanged: (value) {
@@ -420,51 +453,13 @@ class _BookingScreenState extends State<BookingScreen> {
                     hintText: 'Enter your address',
                     errorText: locationErrorText),
               ),
-              const SizedBox(height: 16.0),
-              // TextField(
-              //   controller: dateController,
-              //   keyboardType: TextInputType.datetime,
-              //   onChanged: (value) {
-              //     if (value.isEmpty) {
-              //       setState(() {
-              //         dateErrorText = 'Pick up date is required';
-              //       });
-              //     } else {
-              //       setState(() {
-              //         dateErrorText = null;
-              //       });
-              //     }
-              //   },
-              //   decoration: InputDecoration(
-              //       labelText: 'Pickup date',
-              //       hintText: 'Enter your pick up date',
-              //       errorText: dateErrorText),
-              // ),
-              // const SizedBox(height: 16.0),
-              // TextField(
-              //   controller: timeController,
-              //   keyboardType: TextInputType.datetime,
-              //   onChanged: (value) {
-              //     if (value.isEmpty) {
-              //       setState(() {
-              //         timeErrorText = 'Time is required';
-              //       });
-              //     } else {
-              //       setState(() {
-              //         timeErrorText = null;
-              //       });
-              //     }
-              //   },
-              //   decoration: InputDecoration(
-              //       labelText: 'Pick up time',
-              //       hintText: 'Enter pick up time',
-              //       errorText: timeErrorText),
-              // ),
+              const SizedBox(height: 22.0),
+
               const Text(
                 'Pick up and Delivery Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: dateController,
                 keyboardType: TextInputType.datetime,
@@ -491,7 +486,7 @@ class _BookingScreenState extends State<BookingScreen> {
               TextField(
                 controller: deliverydateController,
                 keyboardType: TextInputType.datetime,
-                onTap: () => _selectDate(context), // Show date picker
+                onTap: () => _selectDelivryDate(context), // Show date picker
                 decoration: InputDecoration(
                   labelText: 'Delivery date',
                   hintText: 'Enter your delivery date',
@@ -502,7 +497,7 @@ class _BookingScreenState extends State<BookingScreen> {
               TextField(
                 controller: deliverytimeController,
                 keyboardType: TextInputType.datetime,
-                onTap: () => _selectTime(context), // Show time picker
+                onTap: () => _selectDeliveryTime(context), // Show time picker
                 decoration: InputDecoration(
                   labelText: 'Delivery time',
                   hintText: 'Enter delivery time',
@@ -510,12 +505,12 @@ class _BookingScreenState extends State<BookingScreen> {
                 ),
               ),
 
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 22.0),
               const Text(
                 'Laundry Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: containerController,
                 keyboardType: TextInputType.text,
@@ -578,12 +573,12 @@ class _BookingScreenState extends State<BookingScreen> {
                   errorText: emailErrorText,
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 22.0),
               const Text(
                 'Payment Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 12.0),
               const Text(
                 'Cash on Delivery for now online Payment coming to',
                 style: TextStyle(fontSize: 17, color: Colors.pink),

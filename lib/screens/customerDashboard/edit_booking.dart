@@ -64,6 +64,24 @@ class _EditBookingState extends State<EditBooking> {
     );
   }
 
+  Future<void> _selectDelivryDate(BuildContext context) async {
+    DatePickerBdaya.showDatePicker(
+      context,
+      showTitleActions: true,
+      minTime: DateTime.now(),
+      maxTime: DateTime.now().add(Duration(days: 365)),
+      onChanged: (date) {
+        // Do nothing on date change
+      },
+      onConfirm: (date) {
+        setState(() {
+          deliverydateController.text = DateFormat('yyyy-MM-dd').format(date);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
+
   Future<void> _selectTime(BuildContext context) async {
     DatePickerBdaya.showTimePicker(
       context,
@@ -74,6 +92,21 @@ class _EditBookingState extends State<EditBooking> {
       onConfirm: (time) {
         setState(() {
           timeController.text = DateFormat('HH:mm').format(time);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
+
+  Future<void> _selectDeliveryTime(BuildContext context) async {
+    DatePickerBdaya.showTimePicker(
+      context,
+      showTitleActions: true,
+      onChanged: (time) {
+        // Do nothing on time change
+      },
+      onConfirm: (time) {
+        setState(() {
           deliverytimeController.text = DateFormat('HH:mm').format(time);
         });
       },
@@ -99,7 +132,7 @@ class _EditBookingState extends State<EditBooking> {
         locationController.text = propertyData?['location'] ?? '';
         deliverytimeController.text = propertyData?['deliveryTime'] ?? '';
         deliverydateController.text = propertyData?['deliveryDate'] ?? '';
-        quantityController.text = propertyData?['qauntity'] ?? '';
+        quantityController.text = propertyData?['quantity'] ?? '';
         laundryTypeController.text = propertyData?['LaundryType'] ?? '';
         containerController.text = propertyData?['LaundryContainer'] ?? '';
       });
@@ -341,13 +374,13 @@ class _EditBookingState extends State<EditBooking> {
             // mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 30.0),
-              const SizedBox(height: 30.0),
+              const SizedBox(height: 20.0),
+
               const Text(
                 'Personal Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: phoneController,
                 keyboardType: TextInputType.number,
@@ -367,7 +400,7 @@ class _EditBookingState extends State<EditBooking> {
                     hintText: 'Enter phone Number',
                     errorText: phoneErrorText),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 20.0),
 
               TextField(
                 controller: emailController,
@@ -389,12 +422,12 @@ class _EditBookingState extends State<EditBooking> {
                   errorText: emailErrorText,
                 ),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 20.0),
               const Text(
                 'Personal Address ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: locationController,
                 onChanged: (value) {
@@ -413,7 +446,7 @@ class _EditBookingState extends State<EditBooking> {
                     hintText: 'Enter your address',
                     errorText: locationErrorText),
               ),
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 20.0),
               // TextField(
               //   controller: dateController,
               //   keyboardType: TextInputType.datetime,
@@ -457,7 +490,7 @@ class _EditBookingState extends State<EditBooking> {
                 'Pick up and Delivery Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: dateController,
                 keyboardType: TextInputType.datetime,
@@ -484,7 +517,7 @@ class _EditBookingState extends State<EditBooking> {
               TextField(
                 controller: deliverydateController,
                 keyboardType: TextInputType.datetime,
-                onTap: () => _selectDate(context), // Show date picker
+                onTap: () => _selectDelivryDate(context), // Show date picker
                 decoration: InputDecoration(
                   labelText: 'Delivery date',
                   hintText: 'Enter your delivery date',
@@ -495,7 +528,7 @@ class _EditBookingState extends State<EditBooking> {
               TextField(
                 controller: deliverytimeController,
                 keyboardType: TextInputType.datetime,
-                onTap: () => _selectTime(context), // Show time picker
+                onTap: () => _selectDeliveryTime(context), // Show time picker
                 decoration: InputDecoration(
                   labelText: 'Delivery time',
                   hintText: 'Enter delivery time',
@@ -503,12 +536,12 @@ class _EditBookingState extends State<EditBooking> {
                 ),
               ),
 
-              const SizedBox(height: 16.0),
+              const SizedBox(height: 20.0),
               const Text(
                 'Laundry Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(height: 5.0),
+              const SizedBox(height: 10.0),
               TextField(
                 controller: containerController,
                 keyboardType: TextInputType.text,

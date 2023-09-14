@@ -119,7 +119,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
     }
     if (location.isEmpty) {
       setState(() {
-        locationErrorText = 'Location is required';
+        locationErrorText = 'Address is required';
       });
     } else {
       setState(() {
@@ -311,7 +311,7 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                   onChanged: (value) {
                     if (value.isEmpty) {
                       setState(() {
-                        phoneErrorText = 'Location is required';
+                        phoneErrorText = 'Physical address is required';
                       });
                     } else {
                       setState(() {
@@ -320,8 +320,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                     }
                   },
                   decoration: InputDecoration(
-                      labelText: 'Location',
-                      hintText: 'Enter your location',
+                      labelText: 'Address',
+                      hintText: 'Enter your address',
                       errorText: locationErrorText),
                 ),
                 const SizedBox(height: 16.0),

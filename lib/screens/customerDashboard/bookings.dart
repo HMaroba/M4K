@@ -98,15 +98,15 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                 Text(
                   'Laundry Status',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 8),
+                SizedBox(height: 16),
                 Text(
                   'Status: $laundryStatus',
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 22,
                   ),
                 ),
               ],
@@ -240,7 +240,7 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                                   );
                                 },
                                 child: const Text(
-                                  'Edit',
+                                  'Edit Booking',
                                   style: TextStyle(fontSize: 17),
                                 ),
                               ),
@@ -258,7 +258,7 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                                   _showDeleteConfirmationDialog(bookingId);
                                 },
                                 child: const Text(
-                                  'Delete',
+                                  'Cancel Booking',
                                   style: TextStyle(
                                       color: Colors.red, fontSize: 17),
                                 ),
