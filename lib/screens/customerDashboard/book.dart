@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -8,6 +11,10 @@ class BookingScreen extends StatefulWidget {
 }
 
 class _BookingScreenState extends State<BookingScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? _user;
+  String? userId;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
@@ -20,6 +27,41 @@ class _BookingScreenState extends State<BookingScreen> {
   String? dateErrorText;
   String? locationErrorText;
   bool isLoading = false;
+
+  // Using Email to fetch Data
+  Future<void> fetchUserData() async {
+    try {
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('customers')
+          .where('email', isEqualTo: _user!.email)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        // Assuming that email is a unique field, you can access the first document
+        DocumentSnapshot userDoc = snapshot.docs.first;
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+
+        emailController.text = userData['email'] ?? '';
+        phoneController.text = userData['phone'] ?? '';
+        locationController.text = userData['location'] ?? '';
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _user = _auth.currentUser;
+    if (_user != null) {
+      userId = _user!.uid;
+      // Fetch user data from Firestore
+      fetchUserData();
+    } else if (_user == null) {
+      Navigator.pushNamed(context, '/login');
+    }
+  }
 
   Future<void> _register() async {
     String email = emailController.text;
@@ -94,27 +136,22 @@ class _BookingScreenState extends State<BookingScreen> {
         setState(() {
           isLoading = true;
         });
-        // // Create user with email and password
-        // UserCredential userCredential =
-        //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        //   email: email,
-        //   password: password,
-        // );
 
         // Get the newly created user's ID
-        // String userId = userCredential.user!.uid;
-        // print(userId);
+        String userId = _user!.uid;
+        print(userId);
         //Create a map of the data you want to send
 
-        // Map<String, dynamic> userData = {
-        //   'email': email,
-        //   'names': names,
-        //   'phone': selectedCountry == "Lesotho" ? "+266$phone" : "+27$phone",
-        //   'country': selectedCountry,
-        //   'userId': userId,
-        // };
-        // Send the data to Firestore
-        // await FirebaseFirestore.instance.collection('users').add(userData);
+        Map<String, dynamic> userData = {
+          'email': email,
+          'date': date,
+          'time': time,
+          'phone': "+266$phone",
+          'location': location,
+          'userId': userId,
+        };
+        //Send the data to Firestore
+        await FirebaseFirestore.instance.collection('bookings').add(userData);
 
         // // Subscribe the user to the topic
         // FirebaseMessaging.instance.subscribeToTopic('all_users');
@@ -130,18 +167,18 @@ class _BookingScreenState extends State<BookingScreen> {
           isLoading = false; // Stop loading
         });
 
-        // Fluttertoast.showToast(
-        //   msg: "Account created Sucessfully",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.green, // Text color of the toast message
-        // );
-        // Navigate to login
-        // Navigator.pushNamed(context, '/loginpage');
+        Fluttertoast.showToast(
+          msg: "Booking was Sucessfully",
+          toastLength: Toast
+              .LENGTH_SHORT, // Duration for which the toast will be visible
+          gravity: ToastGravity
+              .CENTER, // Position of the toast message on the screen
+          backgroundColor:
+              Colors.black54, // Background color of the toast message
+          textColor: Colors.green, // Text color of the toast message
+        );
+        // Navigate back
+        Navigator.pop(context);
       } catch (e) {
         // Handle any errors that occur during the data submission
 
@@ -150,16 +187,16 @@ class _BookingScreenState extends State<BookingScreen> {
         });
 
         print('Error submitting data: $e');
-        // Fluttertoast.showToast(
-        //   msg: "Something went wrong please try again",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.red, // Text color of the toast message
-        // );
+        Fluttertoast.showToast(
+          msg: "Something went wrong please try again",
+          toastLength: Toast
+              .LENGTH_SHORT, // Duration for which the toast will be visible
+          gravity: ToastGravity
+              .CENTER, // Position of the toast message on the screen
+          backgroundColor:
+              Colors.black54, // Background color of the toast message
+          textColor: Colors.red, // Text color of the toast message
+        );
       }
     }
   }
