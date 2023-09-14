@@ -200,21 +200,29 @@ class _CustomerBookingsState extends State<CustomerBookings> {
                           //   style: const TextStyle(fontSize: 16),
                           // ),
                           Text(
-                            'Pickup DateTime: ${bookingData['date']}',
-                            style: const TextStyle(fontSize: 16),
+                            'Pickup Date: ${bookingData['date']}',
+                            style: const TextStyle(fontSize: 18),
                           ),
                           Text(
                             'Pickup Time: ${bookingData['time']}',
-                            style: const TextStyle(fontSize: 16),
+                            style: const TextStyle(fontSize: 18),
                           ),
                           Text(
-                            'Pickup Point: ${bookingData['location']}',
-                            style: const TextStyle(fontSize: 16),
+                            'Delivery Time: ${bookingData['deliveryTime']}',
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            'Delivery Date: ${bookingData['deliveryDate']}',
+                            style: const TextStyle(fontSize: 18),
+                          ),
+                          Text(
+                            'Pickup Address: ${bookingData['location']}',
+                            style: const TextStyle(fontSize: 18),
                           ),
                           Text(
                             'Status: ${bookingData['bookingStatus']}',
                             style: const TextStyle(
-                                fontSize: 20, color: Colors.pink),
+                                fontSize: 18, color: Colors.pink),
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.end,

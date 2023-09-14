@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:intl/intl.dart'; // For date and time formatting
+import 'package:flutter_datetime_picker_bdaya/flutter_datetime_picker_bdaya.dart'; // Import the datetime picker package
 
 class BookingScreen extends StatefulWidget {
   const BookingScreen({super.key});
@@ -18,15 +20,61 @@ class _BookingScreenState extends State<BookingScreen> {
   TextEditingController emailController = TextEditingController();
   TextEditingController dateController = TextEditingController();
   TextEditingController timeController = TextEditingController();
+  TextEditingController deliverydateController = TextEditingController();
+  TextEditingController deliverytimeController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  TextEditingController containerController = TextEditingController();
+  TextEditingController laundryTypeController = TextEditingController();
+  TextEditingController quantityController = TextEditingController();
 
   String? emailErrorText;
   String? timeErrorText;
   String? phoneErrorText;
   String? dateErrorText;
+  String? containerErrorText;
+  String? laundryTypeErrorText;
+  String? quantityErrorText;
+  String? deliveryTimeErrorText;
+  String? deliveryDateErrorText;
   String? locationErrorText;
   bool isLoading = false;
+
+  Future<void> _selectDate(BuildContext context) async {
+    DatePickerBdaya.showDatePicker(
+      context,
+      showTitleActions: true,
+      minTime: DateTime.now(),
+      maxTime: DateTime.now().add(Duration(days: 365)),
+      onChanged: (date) {
+        // Do nothing on date change
+      },
+      onConfirm: (date) {
+        setState(() {
+          dateController.text = DateFormat('yyyy-MM-dd').format(date);
+          deliverydateController.text = DateFormat('yyyy-MM-dd').format(date);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
+
+  Future<void> _selectTime(BuildContext context) async {
+    DatePickerBdaya.showTimePicker(
+      context,
+      showTitleActions: true,
+      onChanged: (time) {
+        // Do nothing on time change
+      },
+      onConfirm: (time) {
+        setState(() {
+          timeController.text = DateFormat('HH:mm').format(time);
+          deliverytimeController.text = DateFormat('HH:mm').format(time);
+        });
+      },
+      currentTime: DateTime.now(),
+    );
+  }
 
   // Using Email to fetch Data
   Future<void> fetchUserData() async {
@@ -67,8 +115,13 @@ class _BookingScreenState extends State<BookingScreen> {
     String email = emailController.text;
     String time = timeController.text;
     String date = dateController.text;
+    String deliverytime = deliverytimeController.text;
+    String deliverydate = deliverydateController.text;
     String phone = phoneController.text;
     String location = locationController.text;
+    String laundryType = laundryTypeController.text;
+    String quantity = quantityController.text;
+    String container = containerController.text;
 
     // Validate email field
     if (email.isEmpty) {
@@ -77,12 +130,61 @@ class _BookingScreenState extends State<BookingScreen> {
       });
     } else {
       setState(() {
-        phoneErrorText = null;
+        emailErrorText = null;
+      });
+    }
+    if (deliverydate.isEmpty) {
+      setState(() {
+        deliveryDateErrorText = 'Delivery date is required';
+      });
+    } else {
+      setState(() {
+        deliveryDateErrorText = null;
+      });
+    }
+    if (laundryType.isEmpty) {
+      setState(() {
+        laundryTypeErrorText = 'Laundry type is required';
+      });
+    } else {
+      setState(() {
+        laundryTypeErrorText = null;
+      });
+    }
+    if (container.isEmpty) {
+      setState(() {
+        containerErrorText = 'Laundry Container is required';
+      });
+    } else {
+      setState(() {
+        containerErrorText = null;
+      });
+    }
+    if (quantity.isEmpty) {
+      setState(() {
+        quantityErrorText = 'Quantity is required';
+      });
+    } else if (quantity.length == 0) {
+      setState(() {
+        quantityErrorText = "Quantity can not be less than 0";
+      });
+    } else {
+      setState(() {
+        quantityErrorText = null;
+      });
+    }
+    if (deliverytime.isEmpty) {
+      setState(() {
+        deliveryTimeErrorText = 'Delivery time is required';
+      });
+    } else {
+      setState(() {
+        deliveryTimeErrorText = null;
       });
     }
     if (location.isEmpty) {
       setState(() {
-        locationErrorText = 'Location is required';
+        locationErrorText = 'Address is required';
       });
     } else {
       setState(() {
@@ -129,6 +231,8 @@ class _BookingScreenState extends State<BookingScreen> {
     if (emailErrorText == null &&
         timeErrorText == null &&
         phoneErrorText == null &&
+        deliveryDateErrorText == null &&
+        deliveryTimeErrorText == null &&
         locationErrorText == null &&
         dateErrorText == null) {
       try {
@@ -146,6 +250,11 @@ class _BookingScreenState extends State<BookingScreen> {
           'email': email,
           'date': date,
           'time': time,
+          'deliveryTime': deliverytime,
+          'deliveryDate': deliverydate,
+          'quantity': quantity,
+          'LaundryType': laundryType,
+          'LaundryContainer': container,
           'phone': "+266$phone",
           'location': location,
           'userId': userId,
@@ -215,14 +324,14 @@ class _BookingScreenState extends State<BookingScreen> {
         child: Padding(
           padding: const EdgeInsets.all(27.0),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            // crossAxisAlignment: CrossAxisAlignment.start,
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                'assets/images/book.png',
-                height: 150,
-              ),
-              const SizedBox(height: 20.0),
+              // Image.asset(
+              //   'assets/images/book.png',
+              //   height: 150,
+              // ),
+              // const SizedBox(height: 20.0),
               const Text(
                 'Book Now!',
                 textAlign: TextAlign.start,
@@ -238,6 +347,11 @@ class _BookingScreenState extends State<BookingScreen> {
                 style: TextStyle(fontSize: 15.0),
               ),
               const SizedBox(height: 30.0),
+              const Text(
+                'Personal Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 5.0),
               TextField(
                 controller: phoneController,
                 keyboardType: TextInputType.number,
@@ -258,65 +372,7 @@ class _BookingScreenState extends State<BookingScreen> {
                     errorText: phoneErrorText),
               ),
               const SizedBox(height: 16.0),
-              TextField(
-                controller: locationController,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      phoneErrorText = 'Location is required';
-                    });
-                  } else {
-                    setState(() {
-                      phoneErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Location',
-                    hintText: 'Enter your location',
-                    errorText: locationErrorText),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: dateController,
-                keyboardType: TextInputType.datetime,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      dateErrorText = 'Pick up date is required';
-                    });
-                  } else {
-                    setState(() {
-                      dateErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Pickup date',
-                    hintText: 'Enter your pick up date',
-                    errorText: dateErrorText),
-              ),
-              const SizedBox(height: 16.0),
-              TextField(
-                controller: timeController,
-                keyboardType: TextInputType.datetime,
-                onChanged: (value) {
-                  if (value.isEmpty) {
-                    setState(() {
-                      timeErrorText = 'Time is required';
-                    });
-                  } else {
-                    setState(() {
-                      timeErrorText = null;
-                    });
-                  }
-                },
-                decoration: InputDecoration(
-                    labelText: 'Pick up time',
-                    hintText: 'Enter pick up time',
-                    errorText: timeErrorText),
-              ),
-              const SizedBox(height: 16.0),
+
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -338,11 +394,203 @@ class _BookingScreenState extends State<BookingScreen> {
                 ),
               ),
               const SizedBox(height: 16.0),
+              const Text(
+                'Personal Address ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 5.0),
+              TextField(
+                controller: locationController,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      locationErrorText = 'Address is required';
+                    });
+                  } else {
+                    setState(() {
+                      locationErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                    labelText: 'Address',
+                    hintText: 'Enter your address',
+                    errorText: locationErrorText),
+              ),
+              const SizedBox(height: 16.0),
+              // TextField(
+              //   controller: dateController,
+              //   keyboardType: TextInputType.datetime,
+              //   onChanged: (value) {
+              //     if (value.isEmpty) {
+              //       setState(() {
+              //         dateErrorText = 'Pick up date is required';
+              //       });
+              //     } else {
+              //       setState(() {
+              //         dateErrorText = null;
+              //       });
+              //     }
+              //   },
+              //   decoration: InputDecoration(
+              //       labelText: 'Pickup date',
+              //       hintText: 'Enter your pick up date',
+              //       errorText: dateErrorText),
+              // ),
+              // const SizedBox(height: 16.0),
+              // TextField(
+              //   controller: timeController,
+              //   keyboardType: TextInputType.datetime,
+              //   onChanged: (value) {
+              //     if (value.isEmpty) {
+              //       setState(() {
+              //         timeErrorText = 'Time is required';
+              //       });
+              //     } else {
+              //       setState(() {
+              //         timeErrorText = null;
+              //       });
+              //     }
+              //   },
+              //   decoration: InputDecoration(
+              //       labelText: 'Pick up time',
+              //       hintText: 'Enter pick up time',
+              //       errorText: timeErrorText),
+              // ),
+              const Text(
+                'Pick up and Delivery Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 5.0),
+              TextField(
+                controller: dateController,
+                keyboardType: TextInputType.datetime,
+                onTap: () => _selectDate(context), // Show date picker
+                decoration: InputDecoration(
+                  labelText: 'Pickup date',
+                  hintText: 'Enter your pick up date',
+                  errorText: dateErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: timeController,
+                keyboardType: TextInputType.datetime,
+                onTap: () => _selectTime(context), // Show time picker
+                decoration: InputDecoration(
+                  labelText: 'Pickup time',
+                  hintText: 'Enter pick up time',
+                  errorText: timeErrorText,
+                ),
+              ),
+
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: deliverydateController,
+                keyboardType: TextInputType.datetime,
+                onTap: () => _selectDate(context), // Show date picker
+                decoration: InputDecoration(
+                  labelText: 'Delivery date',
+                  hintText: 'Enter your delivery date',
+                  errorText: deliveryDateErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: deliverytimeController,
+                keyboardType: TextInputType.datetime,
+                onTap: () => _selectTime(context), // Show time picker
+                decoration: InputDecoration(
+                  labelText: 'Delivery time',
+                  hintText: 'Enter delivery time',
+                  errorText: deliveryTimeErrorText,
+                ),
+              ),
+
+              const SizedBox(height: 16.0),
+              const Text(
+                'Laundry Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 5.0),
+              TextField(
+                controller: containerController,
+                keyboardType: TextInputType.text,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      containerErrorText = 'Laundry Container Size is required';
+                    });
+                  } else {
+                    setState(() {
+                      containerErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Laundry Container Size',
+                  hintText: 'Enter your laundry container size',
+                  errorText: containerErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: laundryTypeController,
+                keyboardType: TextInputType.text,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      laundryTypeErrorText = 'Laundry type is required';
+                    });
+                  } else {
+                    setState(() {
+                      laundryTypeErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Laundry Type',
+                  hintText: 'Enter your laundry type',
+                  errorText: laundryTypeErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: quantityController,
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      quantityErrorText = 'Quantity is required';
+                    });
+                  } else {
+                    setState(() {
+                      quantityErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Quantity',
+                  hintText: 'Enter your laundry quantity',
+                  errorText: emailErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              const Text(
+                'Payment Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 8.0),
+              const Text(
+                'Cash on Delivery for now online Payment coming to',
+                style: TextStyle(fontSize: 17, color: Colors.pink),
+              ),
+
               const SizedBox(height: 24.0),
               ElevatedButton(
                 style: ButtonStyle(
                   fixedSize: MaterialStateProperty.all<Size>(
-                    const Size(310, 40),
+                    const Size(350, 40),
                   ),
                 ),
                 onPressed: isLoading
