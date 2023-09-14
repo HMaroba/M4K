@@ -152,75 +152,58 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
         locationErrorText == null &&
         countryErrorText == null) {
       try {
-        //start loading
+        // Start Loading
         setState(() {
           isLoading = true;
         });
-        // // Create user with email and password
-        // UserCredential userCredential =
-        //     await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        //   email: email,
-        //   password: password,
-        // );
+        // Find the user document based on their email
+        QuerySnapshot snapshot = await FirebaseFirestore.instance
+            .collection('customers')
+            .where('email', isEqualTo: _user!.email)
+            .get();
 
-        // Get the newly created user's ID
-        // String userId = userCredential.user!.uid;
-        // print(userId);
-        //Create a map of the data you want to send
+        if (snapshot.docs.isNotEmpty) {
+          // Get the document reference and update the fields
+          DocumentReference userDocRef = snapshot.docs.first.reference;
+          await userDocRef.update({
+            'names': names,
+            'phone': phone,
+            'location': location,
+          });
 
-        // Map<String, dynamic> userData = {
-        //   'email': email,
-        //   'names': names,
-        //   'phone': selectedCountry == "Lesotho" ? "+266$phone" : "+27$phone",
-        //   'country': selectedCountry,
-        //   'userId': userId,
-        // };
-        // Send the data to Firestore
-        // await FirebaseFirestore.instance.collection('users').add(userData);
+          Future.delayed(const Duration(seconds: 3), () {
+            setState(() {
+              isLoading = false;
+            });
+          });
 
-        // // Subscribe the user to the topic
-        // FirebaseMessaging.instance.subscribeToTopic('all_users');
-
-        // Clear fields
-        emailController.clear();
-        phoneController.clear();
-        namesController.clear();
-        locationController.clear();
-
-        setState(() {
-          isLoading = false; // Stop loading
-        });
-
-        // Fluttertoast.showToast(
-        //   msg: "Account created Sucessfully",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.green, // Text color of the toast message
-        // );
-        // Navigate to login
-        Navigator.pushNamed(context, '/loginpage');
+          // Display success message or navigate to a success screen
+          showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                title: Text('Profile Updated'),
+                content: Text('Your profile has been updated successfully.'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: Text('OK'),
+                  ),
+                ],
+              );
+            },
+          );
+        }
       } catch (e) {
-        // Handle any errors that occur during the data submission
-
+        //Stop loading
         setState(() {
-          isLoading = false; // Stop loading
+          isLoading = false;
         });
 
-        print('Error submitting data: $e');
-        // Fluttertoast.showToast(
-        //   msg: "Something went wrong please try again",
-        //   toastLength: Toast
-        //       .LENGTH_SHORT, // Duration for which the toast will be visible
-        //   gravity: ToastGravity
-        //       .CENTER, // Position of the toast message on the screen
-        //   backgroundColor:
-        //       Colors.black54, // Background color of the toast message
-        //   textColor: Colors.red, // Text color of the toast message
-        // );
+        print('Error updating profile: $e');
+        // Handle error: Display an error message or take appropriate action
       }
     }
   }
