@@ -5,6 +5,7 @@ import 'package:m4k/screens/auth/register.dart';
 import 'package:m4k/screens/auth/reset_password.dart';
 import 'package:m4k/screens/customerDashboard/book.dart';
 import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
+import 'package:m4k/screens/customerDashboard/settings/feedback.dart';
 import 'package:m4k/screens/splash/secondScreen.dart';
 import 'package:m4k/screens/splash/splash_screen.dart';
 
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
         '/secondSplash': (context) => const SecondSplash(),
         '/login': (context) => const LoginScreen(),
         '/userdashboard': (context) => const DashboardPage(),
+        '/feedback': (context) => const SendFeedbackPage(),
         '/book': (context) => const BookingScreen(),
         '/resetPassword': (context) => const ResetPasswordScreen(),
       },

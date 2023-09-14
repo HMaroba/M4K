@@ -96,8 +96,8 @@ class _SettingPageState extends State<SettingPage> {
                     icon: Icons.feedback,
                     title: "Send Feedback",
                     onTap: () {
-                      // Handle the Feedback item click here
-                      // You can navigate to a new page or perform an action
+                      // Navigate to login
+                      Navigator.pushNamed(context, '/feedback');
                     },
                   ),
                   _buildListTile(

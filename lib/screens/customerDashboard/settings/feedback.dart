@@ -50,6 +50,8 @@ class _SendFeedbackPageState extends State<SendFeedbackPage> {
           isLoading = true;
         });
 
+        Navigator.pop(context);
+
         // Clear fields
         emailController.clear();
         messageController.clear();
