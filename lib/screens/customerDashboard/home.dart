@@ -1,3 +1,5 @@
+import 'package:carousel_slider/carousel_options.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -28,8 +30,8 @@ class HomePage extends StatelessWidget {
                   ),
                   gradient: LinearGradient(
                     colors: <Color>[
-                      Color(0xFFFD0E42),
-                      Color(0xFFC30F31),
+                      Colors.pink,
+                      // Color(0xFFC30F31),
                     ],
                   ),
                 ),
@@ -70,44 +72,194 @@ class HomePage extends StatelessWidget {
                 'Our Services',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
               ),
-              Card(
-                elevation: 2, // Add elevation for a card-like appearance
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/images/professional.jpg',
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                      child: Text(
-                        'Wash , Dry , Iron and Fold',
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    )
-                  ],
+              // CarouselSlider(
+              //   options: CarouselOptions(
+              //     height: 250.0, // Adjust the height as needed
+              //     enableInfiniteScroll: true,
+              //     viewportFraction: 0.8,
+              //     autoPlay: true,
+              //     enlargeCenterPage: true,
+              //   ),
+              //   items: [
+              //     Card(
+              //       elevation: 2, // Add elevation for a card-like appearance
+              //       margin:
+              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Image.asset(
+              //             'assets/images/professional.jpg',
+              //           ),
+              //           const Padding(
+              //             padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //             child: Text(
+              //               'Wash , Dry , Iron and Fold',
+              //               style: TextStyle(fontSize: 20),
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //     Card(
+              //       elevation: 2, // Add elevation for a card-like appearance
+              //       margin:
+              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Image.asset(
+              //             'assets/images/book.png',
+              //           ),
+              //           const Padding(
+              //             padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //             child: Text(
+              //               'Pick up and Delivery',
+              //               style: TextStyle(fontSize: 20),
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // CarouselSlider.builder(
+              //   options: CarouselOptions(
+              //     height: 210.0, // Adjust the height as needed
+              //     enableInfiniteScroll: true,
+              //     viewportFraction: 0.9,
+
+              //     autoPlay: true,
+              //     enlargeCenterPage: true,
+              //     autoPlayInterval: const Duration(seconds: 4),
+              //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
+              //     autoPlayCurve: Curves.fastOutSlowIn,
+              //     pauseAutoPlayOnTouch: true,
+              //     aspectRatio: 2.0,
+              //     onPageChanged: (index, reason) {
+              //       // Handle indicator change if needed
+              //     },
+              //     scrollDirection: Axis.horizontal,
+              //   ),
+              //   itemCount: 2, // Number of items in your carousel
+              //   itemBuilder: (BuildContext context, int index, int realIndex) {
+              //     return Card(
+              //       elevation: 2,
+              //       margin:
+              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              //       child: Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Image.asset(
+              //             index == 0
+              //                 ? 'assets/images/professional.jpg'
+              //                 : 'assets/images/book.png',
+              //           ),
+              //           Padding(
+              //             padding:
+              //                 const EdgeInsets.only(left: 8, top: 8, bottom: 5),
+              //             child: Text(
+              //               index == 0
+              //                   ? 'Wash, Dry, Iron and Fold'
+              //                   : 'Pick up and Delivery',
+              //               style: TextStyle(fontSize: 20),
+              //             ),
+              //           )
+              //         ],
+              //       ),
+              //     );
+              //   },
+              // ),
+
+              CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: 200.0,
+                  enableInfiniteScroll: true,
+                  viewportFraction: 0.9,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  autoPlayInterval: Duration(seconds: 4),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  pauseAutoPlayOnTouch: true,
+                  aspectRatio: 2.0,
+                  onPageChanged: (index, reason) {
+                    // Handle indicator change if needed
+                  },
+                  scrollDirection: Axis.horizontal,
                 ),
-              ),
-              Card(
-                elevation: 2, // Add elevation for a card-like appearance
-                margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      'assets/images/book.png',
-                    ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                      child: Text(
-                        'Pick up and Delivery',
-                        style: TextStyle(fontSize: 20),
+                itemCount: 3, // Number of items in your carousel (updated to 3)
+                itemBuilder: (BuildContext context, int index, int realIndex) {
+                  if (index == 0) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/professional.jpg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Wash, Dry, Iron and Fold',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                    );
+                  } else if (index == 1) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/book.png',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Pick up and Delivery',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/machine.jpg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Iron and Fold',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                },
               ),
+
               const SizedBox(
                 height: 20,
               ),
@@ -115,9 +267,98 @@ class HomePage extends StatelessWidget {
                 'Our Prices',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
               ),
+              CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: 250.0,
+                  enableInfiniteScroll: true,
+                  viewportFraction: 0.6,
+                  autoPlay: true,
+                  enlargeCenterPage: true,
+                  autoPlayInterval: Duration(seconds: 4),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  pauseAutoPlayOnTouch: true,
+                  aspectRatio: 2.0,
+                  onPageChanged: (index, reason) {
+                    // Handle indicator change if needed
+                  },
+                  scrollDirection: Axis.horizontal,
+                ),
+                itemCount: 3, // Number of items in your carousel (updated to 3)
+                itemBuilder: (BuildContext context, int index, int realIndex) {
+                  if (index == 0) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/basket.jpg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Wash, Dry, Iron and Fold',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  } else if (index == 1) {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/bucket.jpeg',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Pick up and Delivery',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  } else {
+                    return Card(
+                      elevation: 2,
+                      margin: const EdgeInsets.symmetric(
+                          vertical: 8, horizontal: 16),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Image.asset(
+                            'assets/images/book.png',
+                          ),
+                          const Padding(
+                            padding:
+                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                            child: Text(
+                              'Pick up and Delivery',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  }
+                },
+              ),
 
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
                     width: 150,
@@ -153,7 +394,7 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/book.png',
+                            'assets/images/bucket.jpeg',
                           ),
                           const Padding(
                             padding:
@@ -170,7 +411,7 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
                     width: 150,
@@ -206,7 +447,7 @@ class HomePage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Image.asset(
-                            'assets/images/book.png',
+                            'assets/images/bucket.jpeg',
                           ),
                           const Padding(
                             padding:
