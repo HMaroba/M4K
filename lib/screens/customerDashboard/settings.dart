@@ -74,6 +74,7 @@ class _SettingPageState extends State<SettingPage> {
                     onTap: () {
                       // Handle the Contact Us item click here
                       // You can navigate to a new page or perform an action
+                      Navigator.pushNamed(context, '/contact');
                     },
                   ),
                   _buildListTile(
