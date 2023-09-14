@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:m4k/screens/customerDashboard/bookings.dart';
 import 'package:m4k/screens/customerDashboard/profile.dart';
 import 'package:m4k/screens/customerDashboard/settings.dart';
-
-import 'home.dart';
+import 'package:m4k/screens/customerDashboard/homepage.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});

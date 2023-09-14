@@ -15,7 +15,7 @@ class _SecondSplashState extends State<SecondSplash> {
   }
 
   Future<void> _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 4));
     Navigator.pushReplacementNamed(context, '/login');
   }
 
