@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/auth/register.dart';
@@ -7,7 +8,9 @@ import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
 import 'package:m4k/screens/splash/secondScreen.dart';
 import 'package:m4k/screens/splash/splash_screen.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 

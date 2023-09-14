@@ -22,7 +22,6 @@ class _RegisterPageState extends State<RegisterPage> {
   String? passwordErrorText;
   String? namesErrorText;
   String? phoneErrorText;
-  String? countryErrorText;
   String? locationErrorText;
   bool isLoading = false;
 
@@ -40,7 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
       });
     } else {
       setState(() {
-        phoneErrorText = null;
+        emailErrorText = null;
       });
     }
     if (location.isEmpty) {
@@ -97,8 +96,7 @@ class _RegisterPageState extends State<RegisterPage> {
         passwordErrorText == null &&
         namesErrorText == null &&
         phoneErrorText == null &&
-        locationErrorText == null &&
-        countryErrorText == null) {
+        locationErrorText == null) {
       try {
         //start loading
         setState(() {
@@ -151,7 +149,7 @@ class _RegisterPageState extends State<RegisterPage> {
           textColor: Colors.green, // Text color of the toast message
         );
         // Navigate to login
-        Navigator.pushNamed(context, '/loginpage');
+        Navigator.pushNamed(context, '/login');
       } catch (e) {
         // Handle any errors that occur during the data submission
 

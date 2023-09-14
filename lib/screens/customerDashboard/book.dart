@@ -149,6 +149,7 @@ class _BookingScreenState extends State<BookingScreen> {
           'phone': "+266$phone",
           'location': location,
           'userId': userId,
+          'bookingStatus': 'PENDING'
         };
         //Send the data to Firestore
         await FirebaseFirestore.instance.collection('bookings').add(userData);
