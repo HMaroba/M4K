@@ -1,4 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
 import 'package:video_player/video_player.dart';
 
@@ -24,6 +27,10 @@ class UserProfileScreen extends StatefulWidget {
 }
 
 class _UserProfileScreenState extends State<UserProfileScreen> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  User? _user;
+  String? userId;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController locationController = TextEditingController();
   TextEditingController namesController = TextEditingController();
@@ -36,6 +43,56 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   String? countryErrorText;
   String? locationErrorText;
   bool isLoading = false;
+
+  // Using Email to fetch Data
+  Future<void> fetchUserData() async {
+    try {
+      QuerySnapshot snapshot = await FirebaseFirestore.instance
+          .collection('customers')
+          .where('email', isEqualTo: _user!.email)
+          .get();
+
+      if (snapshot.docs.isNotEmpty) {
+        // Assuming that email is a unique field, you can access the first document
+        DocumentSnapshot userDoc = snapshot.docs.first;
+        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
+        namesController.text = userData['names'] ?? '';
+        emailController.text = userData['email'] ?? '';
+        phoneController.text = userData['phone'] ?? '';
+        locationController.text = userData['location'] ?? '';
+      }
+    } catch (e) {
+      print('Error fetching user data: $e');
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _user = _auth.currentUser;
+    if (_user != null) {
+      userId = _user!.uid;
+      // Fetch user data from Firestore
+      fetchUserData();
+    } else if (_user == null) {
+      Navigator.pushNamed(context, '/login');
+    }
+  }
+
+  Future<void> _signOut() async {
+    try {
+      await _auth.signOut();
+      // Navigate to login page or any other page you want after logout
+      // Clear the navigation stack and replace it with the login page
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+        (route) => false,
+      );
+    } catch (e) {
+      print('Error signing out: $e');
+    }
+  }
 
   Future<void> _register() async {
     String email = emailController.text;
