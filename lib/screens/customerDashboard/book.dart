@@ -233,6 +233,9 @@ class _BookingScreenState extends State<BookingScreen> {
         phoneErrorText == null &&
         deliveryDateErrorText == null &&
         deliveryTimeErrorText == null &&
+        laundryTypeErrorText == null &&
+        containerErrorText == null &&
+        quantityErrorText == null &&
         locationErrorText == null &&
         dateErrorText == null) {
       try {
@@ -333,10 +336,10 @@ class _BookingScreenState extends State<BookingScreen> {
               // ),
               // const SizedBox(height: 20.0),
               const Text(
-                'Book Now!',
+                'Experience the Best in Laundry Care',
                 textAlign: TextAlign.start,
                 style: TextStyle(
-                  fontSize: 30.0,
+                  fontSize: 23.0,
                   fontWeight: FontWeight.w400,
                 ),
                 // style: Theme.of(context).textTheme.displayMedium,
