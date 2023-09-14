@@ -27,6 +27,15 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   color: Colors.pink),
             ),
           ),
+          const Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+            ),
+            child: Text(
+              'Coming Soon stay tuned',
+              style: TextStyle(fontSize: 22, fontWeight: FontWeight.w400),
+            ),
+          ),
           Expanded(
             // Wrap the ListView in an Expanded widget
             child: ListView(
@@ -45,12 +54,29 @@ class _PaymentsScreenState extends State<PaymentsScreen> {
                   onTap: () {
                     // Handle the Contact Us item click here
                     // You can navigate to a new page or perform an action
-                    Navigator.pushNamed(context, '/contact');
+                    // Navigator.pushNamed(context, '/contact');
+                  },
+                ),
+                _buildListTile(
+                  icon: Icons.wallet,
+                  title: "Standard Lesotho Bank",
+                  onTap: () {
+                    // Handle the Contact Us item click here
+                    // You can navigate to a new page or perform an action
+                    // Navigator.pushNamed(context, '/contact');
                   },
                 ),
                 _buildListTile(
                   icon: Icons.wallet,
                   title: "FNB",
+                  onTap: () {
+                    // Handle the Payments item click here
+                    // You can navigate to a new page or perform an action
+                  },
+                ),
+                _buildListTile(
+                  icon: Icons.wallet,
+                  title: "Cash on Delivery",
                   onTap: () {
                     // Handle the Payments item click here
                     // You can navigate to a new page or perform an action

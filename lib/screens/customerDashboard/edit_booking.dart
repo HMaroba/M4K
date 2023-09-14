@@ -605,6 +605,17 @@ class _EditBookingState extends State<EditBooking> {
                 ),
               ),
 
+              const SizedBox(height: 22.0),
+              const Text(
+                'Payment Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 12.0),
+              const Text(
+                'Cash on Delivery',
+                style: TextStyle(fontSize: 20, color: Colors.pink),
+              ),
+
               const SizedBox(height: 24.0),
               ElevatedButton(
                 style: ButtonStyle(

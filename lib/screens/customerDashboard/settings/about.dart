@@ -41,7 +41,7 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
               Text(
                 '1. Pickup & Delivery:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               Text(
                   'Say goodbye to the laundromat. We offer seamless pickup and delivery services at your doorstep, saving you valuable time and effort.'),
@@ -50,7 +50,7 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
               Text(
                 '2. Expert Care:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               Text(
                   'Your garments are in safe hands with us. Our skilled professionals are well-equipped to handle everything from delicate fabrics to tough stains.'),
@@ -59,7 +59,7 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
               Text(
                 '3. Affordable Pricing:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               Text(
                   'We believe in providing top-notch services without breaking the bank. Our transparent pricing ensures you know exactly what you\'re paying for.'),
@@ -68,7 +68,7 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
               Text(
                 '4. Convenience Guaranteed:',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
               ),
               Text(
                   'With our user-friendly app, you can schedule laundry pickups and deliveries at your convenience, ensuring your laundry fits into your busy schedule, not the other way around.'),

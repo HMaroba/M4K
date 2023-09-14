@@ -580,7 +580,12 @@ class _BookingScreenState extends State<BookingScreen> {
               ),
               const SizedBox(height: 12.0),
               const Text(
-                'Cash on Delivery for now online Payment coming to',
+                'Cash on Delivery',
+                style: TextStyle(fontSize: 20, color: Colors.pink),
+              ),
+              const SizedBox(height: 15.0),
+              const Text(
+                'Other online Payments  methods coming soon',
                 style: TextStyle(fontSize: 17, color: Colors.pink),
               ),
 
