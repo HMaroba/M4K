@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+class SecondSplash extends StatefulWidget {
+  const SecondSplash({super.key});
 
   @override
-  State<SplashScreen> createState() => _SplashScreenState();
+  State<SecondSplash> createState() => _SecondSplashState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SecondSplashState extends State<SecondSplash> {
   @override
   void initState() {
     super.initState();
-    _navigateToSecondScreen();
+    _navigateToHome();
   }
 
-  Future<void> _navigateToSecondScreen() async {
+  Future<void> _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.pushReplacementNamed(context, '/secondSplash');
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   @override
@@ -29,16 +29,16 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image.asset(
-              'assets/images/bookNow.png',
+              'assets/images/services.png',
               height: 200,
             ),
             const SizedBox(
               height: 35.0,
             ),
             const Text(
-              "M4K LAUNDRY SERVICES",
+              "We HAVE GOT YOU COVERED",
               style: TextStyle(
-                  fontSize: 25.0,
+                  fontSize: 23.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
