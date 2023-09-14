@@ -96,8 +96,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
       body: Padding(
         padding: const EdgeInsets.all(27.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 200.0),
             const Text(
               'Contact US',
               style: TextStyle(
@@ -107,17 +108,42 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
 
               //
             ),
-            const SizedBox(height: 60.0),
-            const Text(
-              'm4k@gmail.co.ls',
-              style: TextStyle(fontSize: 20),
+            const SizedBox(height: 40.0),
+            const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.email,
+                  size: 30,
+                  color: Colors.pink,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  'm4k@gmail.co.ls',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
             ),
-            const SizedBox(height: 10.0),
-            const Text(
-              '+266 63338813 / +266 58511867',
-              style: TextStyle(fontSize: 20),
+            const Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Icon(
+                  Icons.phone,
+                  size: 30,
+                  color: Colors.pink,
+                ),
+                SizedBox(
+                  width: 8,
+                ),
+                Text(
+                  '+266 63338813 / +266 58511867',
+                  style: TextStyle(fontSize: 20),
+                ),
+              ],
             ),
-            const SizedBox(height: 16.0),
+            const SizedBox(height: 32.0),
             TextField(
               controller: phoneController,
               keyboardType: TextInputType.number,
@@ -187,7 +213,7 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
             ElevatedButton(
               style: ButtonStyle(
                 fixedSize: MaterialStateProperty.all<Size>(
-                  const Size(310, 42),
+                  const Size(350, 42),
                 ),
               ),
               onPressed: isLoading ? null : _login,
