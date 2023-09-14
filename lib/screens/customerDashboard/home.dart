@@ -78,7 +78,7 @@ class HomePage extends StatelessWidget {
 
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 260.0,
+                  height: 176.0,
                   enableInfiniteScroll: true,
                   viewportFraction: 0.9,
                   autoPlay: true,
@@ -106,15 +106,15 @@ class HomePage extends StatelessWidget {
                         Image.asset(
                           item['imagePath'],
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                          child: Text(
-                            item['name'],
-                            style: const TextStyle(
-                                fontSize: 23, fontWeight: FontWeight.w400),
-                          ),
-                        )
+                        // Padding(
+                        //   padding: const EdgeInsets.only(
+                        //       left: 8, top: 16, bottom: 5),
+                        //   child: Text(
+                        //     item['name'],
+                        //     style: const TextStyle(
+                        //         fontSize: 23, fontWeight: FontWeight.w400),
+                        //   ),
+                        // )
                       ],
                     ),
                   );
@@ -130,7 +130,7 @@ class HomePage extends StatelessWidget {
               ),
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 300.0,
+                  height: 270.0,
                   enableInfiniteScroll: true,
                   viewportFraction: 0.9,
                   autoPlay: true,
@@ -163,7 +163,7 @@ class HomePage extends StatelessWidget {
                               const EdgeInsets.only(left: 8, top: 8, bottom: 5),
                           child: Text(
                             item['name'],
-                            style: const TextStyle(fontSize: 24),
+                            style: const TextStyle(fontSize: 22),
                           ),
                         )
                       ],

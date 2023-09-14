@@ -353,7 +353,7 @@ class _WatchDemoState extends State<WatchDemo> {
     // or the internet.
     _controller = VideoPlayerController.networkUrl(
       Uri.parse(
-        'https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4',
+        'https://firebasestorage.googleapis.com/v0/b/flutter-image-upload-2f000.appspot.com/o/y2mate.com%20-%20Wash%20and%20fold%20drop%20off%20process%20at%20The%20Laundry%20Room_480p.mp4?alt=media&token=b8111418-ce77-4032-9b37-e78a7b0e2e55',
       ),
     );
 
