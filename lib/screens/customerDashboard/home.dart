@@ -1,6 +1,8 @@
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/customerDashboard/price_list.dart';
+import 'package:m4k/screens/customerDashboard/services.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -17,6 +19,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(2),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
+            // crossAxisAlignment: ,
             children: [
               Container(
                 width: double.infinity,
@@ -31,7 +34,7 @@ class HomePage extends StatelessWidget {
                   gradient: LinearGradient(
                     colors: <Color>[
                       Colors.pink,
-                      // Color(0xFFC30F31),
+                      Color(0xFFC30F31),
                     ],
                   ),
                 ),
@@ -72,114 +75,16 @@ class HomePage extends StatelessWidget {
                 'Our Services',
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
               ),
-              // CarouselSlider(
-              //   options: CarouselOptions(
-              //     height: 250.0, // Adjust the height as needed
-              //     enableInfiniteScroll: true,
-              //     viewportFraction: 0.8,
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //   ),
-              //   items: [
-              //     Card(
-              //       elevation: 2, // Add elevation for a card-like appearance
-              //       margin:
-              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           Image.asset(
-              //             'assets/images/professional.jpg',
-              //           ),
-              //           const Padding(
-              //             padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //             child: Text(
-              //               'Wash , Dry , Iron and Fold',
-              //               style: TextStyle(fontSize: 20),
-              //             ),
-              //           )
-              //         ],
-              //       ),
-              //     ),
-              //     Card(
-              //       elevation: 2, // Add elevation for a card-like appearance
-              //       margin:
-              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           Image.asset(
-              //             'assets/images/book.png',
-              //           ),
-              //           const Padding(
-              //             padding: EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //             child: Text(
-              //               'Pick up and Delivery',
-              //               style: TextStyle(fontSize: 20),
-              //             ),
-              //           )
-              //         ],
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // CarouselSlider.builder(
-              //   options: CarouselOptions(
-              //     height: 210.0, // Adjust the height as needed
-              //     enableInfiniteScroll: true,
-              //     viewportFraction: 0.9,
-
-              //     autoPlay: true,
-              //     enlargeCenterPage: true,
-              //     autoPlayInterval: const Duration(seconds: 4),
-              //     autoPlayAnimationDuration: const Duration(milliseconds: 800),
-              //     autoPlayCurve: Curves.fastOutSlowIn,
-              //     pauseAutoPlayOnTouch: true,
-              //     aspectRatio: 2.0,
-              //     onPageChanged: (index, reason) {
-              //       // Handle indicator change if needed
-              //     },
-              //     scrollDirection: Axis.horizontal,
-              //   ),
-              //   itemCount: 2, // Number of items in your carousel
-              //   itemBuilder: (BuildContext context, int index, int realIndex) {
-              //     return Card(
-              //       elevation: 2,
-              //       margin:
-              //           const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              //       child: Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           Image.asset(
-              //             index == 0
-              //                 ? 'assets/images/professional.jpg'
-              //                 : 'assets/images/book.png',
-              //           ),
-              //           Padding(
-              //             padding:
-              //                 const EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //             child: Text(
-              //               index == 0
-              //                   ? 'Wash, Dry, Iron and Fold'
-              //                   : 'Pick up and Delivery',
-              //               style: TextStyle(fontSize: 20),
-              //             ),
-              //           )
-              //         ],
-              //       ),
-              //     );
-              //   },
-              // ),
 
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 200.0,
+                  height: 260.0,
                   enableInfiniteScroll: true,
                   viewportFraction: 0.9,
                   autoPlay: true,
                   enlargeCenterPage: true,
-                  autoPlayInterval: Duration(seconds: 4),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   pauseAutoPlayOnTouch: true,
                   aspectRatio: 2.0,
@@ -188,97 +93,31 @@ class HomePage extends StatelessWidget {
                   },
                   scrollDirection: Axis.horizontal,
                 ),
-                itemCount: 4, // Number of items in your carousel (updated to 3)
+                itemCount: servicesList.length,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
-                  if (index == 0) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/washing2.png',
+                  final item = servicesList[index];
+                  return Card(
+                    elevation: 2,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          item['imagePath'],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                          child: Text(
+                            item['name'],
+                            style: const TextStyle(
+                                fontSize: 23, fontWeight: FontWeight.w400),
                           ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Washing',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else if (index == 1) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/professional.jpg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Ironing',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else if (index == 2) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/wash.jpg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Folding',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/book.png',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Pick up and Delivery',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  }
+                        )
+                      ],
+                    ),
+                  );
                 },
               ),
 
@@ -291,13 +130,13 @@ class HomePage extends StatelessWidget {
               ),
               CarouselSlider.builder(
                 options: CarouselOptions(
-                  height: 200.0,
+                  height: 300.0,
                   enableInfiniteScroll: true,
                   viewportFraction: 0.9,
                   autoPlay: true,
                   enlargeCenterPage: true,
-                  autoPlayInterval: Duration(seconds: 4),
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayInterval: const Duration(seconds: 4),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
                   autoPlayCurve: Curves.fastOutSlowIn,
                   pauseAutoPlayOnTouch: true,
                   aspectRatio: 2.0,
@@ -306,207 +145,33 @@ class HomePage extends StatelessWidget {
                   },
                   scrollDirection: Axis.horizontal,
                 ),
-                itemCount: 4, // Number of items in your carousel (updated to 3)
+                itemCount: priceList.length,
                 itemBuilder: (BuildContext context, int index, int realIndex) {
-                  if (index == 0) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/baket.jpg',
+                  final item = priceList[index];
+                  return Card(
+                    elevation: 2,
+                    margin:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          item['imagePath'],
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.only(left: 8, top: 8, bottom: 5),
+                          child: Text(
+                            item['name'],
+                            style: const TextStyle(fontSize: 24),
                           ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Small : M50',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else if (index == 1) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/bucket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Medium : M70.00',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else if (index == 1) {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/baket.jpeg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Large : M100.00',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  } else {
-                    return Card(
-                      elevation: 2,
-                      margin: const EdgeInsets.symmetric(
-                          vertical: 8, horizontal: 16),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Image.asset(
-                            'assets/images/sne.jpg',
-                          ),
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 8, top: 8, bottom: 5),
-                            child: Text(
-                              'Sneakers : M20.00',
-                              style: TextStyle(fontSize: 20),
-                            ),
-                          )
-                        ],
-                      ),
-                    );
-                  }
+                        )
+                      ],
+                    ),
+                  );
                 },
               ),
 
-              // Row(
-              //   // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     SizedBox(
-              //       width: 150,
-              //       child: Card(
-              //         elevation: 2, // Add elevation for a card-like appearance
-              //         margin: const EdgeInsets.symmetric(
-              //             vertical: 8, horizontal: 16),
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Image.asset(
-              //               'assets/images/bucket.jpeg',
-              //             ),
-              //             const Padding(
-              //               padding:
-              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //               child: Text(
-              //                 'Small Bucket : M50',
-              //                 style: TextStyle(fontSize: 16),
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 150,
-              //       child: Card(
-              //         elevation: 2, // Add elevation for a card-like appearance
-              //         margin: const EdgeInsets.symmetric(
-              //             vertical: 8, horizontal: 16),
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Image.asset(
-              //               'assets/images/bucket.jpeg',
-              //             ),
-              //             const Padding(
-              //               padding:
-              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //               child: Text(
-              //                 'Medium Bucket : M70',
-              //                 style: TextStyle(fontSize: 16),
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Container(
-              //       width: 150,
-              //       child: Card(
-              //         elevation: 2, // Add elevation for a card-like appearance
-              //         margin: const EdgeInsets.symmetric(
-              //             vertical: 8, horizontal: 16),
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Image.asset(
-              //               'assets/images/bucket.jpeg',
-              //             ),
-              //             const Padding(
-              //               padding:
-              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //               child: Text(
-              //                 'Large Bucket :  M100.00',
-              //                 style: TextStyle(fontSize: 16),
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //     Container(
-              //       width: 150,
-              //       child: Card(
-              //         elevation: 2, // Add elevation for a card-like appearance
-              //         margin: const EdgeInsets.symmetric(
-              //             vertical: 8, horizontal: 16),
-              //         child: Column(
-              //           crossAxisAlignment: CrossAxisAlignment.start,
-              //           children: [
-              //             Image.asset(
-              //               'assets/images/bucket.jpeg',
-              //             ),
-              //             const Padding(
-              //               padding:
-              //                   EdgeInsets.only(left: 8, top: 8, bottom: 5),
-              //               child: Text(
-              //                 'Sneakers : LSL 20',
-              //                 style: TextStyle(fontSize: 16),
-              //               ),
-              //             )
-              //           ],
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               // ListView.builder(
               //   shrinkWrap:
               //       true, // Ensure the ListView doesn't take more space than needed
