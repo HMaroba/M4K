@@ -126,6 +126,9 @@ class _ContactUsScreenState extends State<ContactUsScreen> {
                 ),
               ],
             ),
+            const SizedBox(
+              height: 8,
+            ),
             const Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
