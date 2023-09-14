@@ -5,6 +5,7 @@ import 'package:m4k/screens/auth/register.dart';
 import 'package:m4k/screens/auth/reset_password.dart';
 import 'package:m4k/screens/customerDashboard/book.dart';
 import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
+import 'package:m4k/screens/customerDashboard/settings/about.dart';
 import 'package:m4k/screens/customerDashboard/settings/contactus.dart';
 import 'package:m4k/screens/customerDashboard/settings/feedback.dart';
 import 'package:m4k/screens/customerDashboard/settings/payments.dart';
@@ -34,6 +35,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/register': (context) => const RegisterPage(),
+        '/about': (context) => const AboutScreen(),
         '/secondSplash': (context) => const SecondSplash(),
         '/login': (context) => const LoginScreen(),
         '/userdashboard': (context) => const DashboardPage(),
