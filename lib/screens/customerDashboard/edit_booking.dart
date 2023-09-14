@@ -3,14 +3,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
-class BookingScreen extends StatefulWidget {
-  const BookingScreen({super.key});
+class EditBooking extends StatefulWidget {
+  final String docId;
+
+  const EditBooking({
+    super.key,
+    required this.docId,
+  });
 
   @override
-  State<BookingScreen> createState() => _BookingScreenState();
+  State<EditBooking> createState() => _EditBookingState();
 }
 
-class _BookingScreenState extends State<BookingScreen> {
+class _EditBookingState extends State<EditBooking> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   User? _user;
   String? userId;
@@ -27,26 +32,28 @@ class _BookingScreenState extends State<BookingScreen> {
   String? dateErrorText;
   String? locationErrorText;
   bool isLoading = false;
+  String? bookingStatus;
+  String? laundryStatus;
 
-  // Using Email to fetch Data
-  Future<void> fetchUserData() async {
+  Map<String, dynamic>? propertyData;
+
+  void fetchPropertyData() async {
     try {
-      QuerySnapshot snapshot = await FirebaseFirestore.instance
-          .collection('customers')
-          .where('email', isEqualTo: _user!.email)
+      DocumentSnapshot snapshot = await FirebaseFirestore.instance
+          .collection('bookings')
+          .doc(widget.docId) // Use the provided docId
           .get();
+      setState(() {
+        propertyData = snapshot.data() as Map<String, dynamic>;
 
-      if (snapshot.docs.isNotEmpty) {
-        // Assuming that email is a unique field, you can access the first document
-        DocumentSnapshot userDoc = snapshot.docs.first;
-        Map<String, dynamic> userData = userDoc.data() as Map<String, dynamic>;
-
-        emailController.text = userData['email'] ?? '';
-        phoneController.text = userData['phone'] ?? '';
-        locationController.text = userData['location'] ?? '';
-      }
+        emailController.text = propertyData?['email'] ?? '';
+        timeController.text = propertyData?['time'] ?? '';
+        dateController.text = propertyData?['date'] ?? '';
+        phoneController.text = propertyData?['phone'] ?? '';
+        locationController.text = propertyData?['location'] ?? '';
+      });
     } catch (e) {
-      print('Error fetching user data: $e');
+      print('Error fetching property data: $e');
     }
   }
 
@@ -57,7 +64,7 @@ class _BookingScreenState extends State<BookingScreen> {
     if (_user != null) {
       userId = _user!.uid;
       // Fetch user data from Firestore
-      fetchUserData();
+      fetchPropertyData();
     } else if (_user == null) {
       Navigator.pushNamed(context, '/login');
     }
@@ -142,18 +149,18 @@ class _BookingScreenState extends State<BookingScreen> {
         print(userId);
         //Create a map of the data you want to send
 
-        Map<String, dynamic> userData = {
+        //Send the data to Firestore
+        await FirebaseFirestore.instance
+            .collection('bookings')
+            .doc(widget.docId)
+            .update({
           'email': email,
           'date': date,
           'time': time,
           'phone': "+266$phone",
           'location': location,
           'userId': userId,
-          'bookingStatus': 'PENDING',
-          'LaundryStatus': 'Not Collected',
-        };
-        //Send the data to Firestore
-        await FirebaseFirestore.instance.collection('bookings').add(userData);
+        });
 
         // // Subscribe the user to the topic
         // FirebaseMessaging.instance.subscribeToTopic('all_users');
@@ -170,7 +177,7 @@ class _BookingScreenState extends State<BookingScreen> {
         });
 
         Fluttertoast.showToast(
-          msg: "Booking was Sucessfully",
+          msg: "Booking updated Sucessfully",
           toastLength: Toast
               .LENGTH_SHORT, // Duration for which the toast will be visible
           gravity: ToastGravity
@@ -207,7 +214,7 @@ class _BookingScreenState extends State<BookingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Book Now"),
+        title: const Text("Update Booking"),
         centerTitle: true,
       ),
       resizeToAvoidBottomInset: false,
@@ -218,25 +225,6 @@ class _BookingScreenState extends State<BookingScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             // crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Image.asset(
-                'assets/images/book.png',
-                height: 150,
-              ),
-              const SizedBox(height: 20.0),
-              const Text(
-                'Book Now!',
-                textAlign: TextAlign.start,
-                style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.w400,
-                ),
-                // style: Theme.of(context).textTheme.displayMedium,
-              ),
-              const SizedBox(height: 7.0),
-              const Text(
-                'We will respond to you shortly',
-                style: TextStyle(fontSize: 15.0),
-              ),
               const SizedBox(height: 30.0),
               TextField(
                 controller: phoneController,
@@ -364,7 +352,7 @@ class _BookingScreenState extends State<BookingScreen> {
                         ],
                       )
                     : const Text(
-                        'Submit',
+                        'Update Booking',
                         style: TextStyle(fontSize: 16.0),
                       ),
               ),
