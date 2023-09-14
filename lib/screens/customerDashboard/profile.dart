@@ -224,7 +224,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
           title: const Text('Profile'),
           centerTitle: true,
           actions: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.logout))
+            IconButton(
+                onPressed: () {
+                  _signOut();
+                },
+                icon: const Icon(Icons.logout))
           ],
         ),
         resizeToAvoidBottomInset: false,
