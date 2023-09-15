@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 
-class SecondSplash extends StatefulWidget {
-  const SecondSplash({super.key});
+class FirstSreenSplash extends StatefulWidget {
+  const FirstSreenSplash({super.key});
 
   @override
-  State<SecondSplash> createState() => _SecondSplashState();
+  State<FirstSreenSplash> createState() => _FirstSreenSplashState();
 }
 
-class _SecondSplashState extends State<SecondSplash> {
+class _FirstSreenSplashState extends State<FirstSreenSplash> {
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+    _navigateToSecondScreen();
   }
 
-  Future<void> _navigateToHome() async {
-    await Future.delayed(const Duration(seconds: 6));
-    Navigator.pushReplacementNamed(context, '/login');
+  Future<void> _navigateToSecondScreen() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Navigator.pushReplacementNamed(context, '/splash');
   }
 
   @override
@@ -28,17 +28,19 @@ class _SecondSplashState extends State<SecondSplash> {
             child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image.asset(
-              'assets/images/services.png',
-              height: 200,
+            ClipOval(
+              child: Image.asset(
+                'assets/images/logo.jpg',
+                height: 200,
+              ),
             ),
             const SizedBox(
               height: 35.0,
             ),
             const Text(
-              "WE HAVE GOT YOU COVERED",
+              "M4K LAUNDRY",
               style: TextStyle(
-                  fontSize: 23.0,
+                  fontSize: 25.0,
                   fontWeight: FontWeight.bold,
                   color: Colors.white),
             ),
