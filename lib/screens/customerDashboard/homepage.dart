@@ -94,6 +94,15 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
+                    SizedBox(
+                      width: 80,
+                    ),
+                    ClipOval(
+                      child: Image.asset(
+                        'assets/images/logo.jpg',
+                        height: 50,
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -118,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(
-                      left: 16,
+                      left: 18,
                     ),
                     child: Text(
                       'Our Services',
@@ -164,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                               child: Text(
                                 item['name'],
                                 style: const TextStyle(
-                                    fontSize: 23, fontWeight: FontWeight.w400),
+                                    fontSize: 20, fontWeight: FontWeight.w400),
                               ),
                             )
                           ],
@@ -177,12 +186,12 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const Padding(
                     padding: EdgeInsets.only(
-                      left: 16,
+                      left: 18,
                     ),
                     child: Text(
                       'Our Prices',
                       style:
-                          TextStyle(fontSize: 25, fontWeight: FontWeight.w400),
+                          TextStyle(fontSize: 23, fontWeight: FontWeight.w400),
                     ),
                   ),
                   CarouselSlider.builder(

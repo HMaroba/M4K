@@ -86,9 +86,13 @@ class _LoginScreenState extends State<LoginScreen> {
               if (isAdmin) {
                 // User is an admin, navigate to the admin page
                 Navigator.pushNamed(context, '/admin');
+                emailController.clear();
+                passwordController.clear();
               } else {
                 // User is not an admin, navigate to the user dashboard page
                 Navigator.pushNamed(context, '/userdashboard');
+                emailController.clear();
+                passwordController.clear();
               }
             } else {
               // Handle the case where no matching document is found
@@ -109,8 +113,6 @@ class _LoginScreenState extends State<LoginScreen> {
           // Navigate to dashboard or home screen
           // Navigator.pushNamed(context, '/userdashboard');
           // Navigator.pushNamed(context, '/admin');
-          emailController.clear();
-          passwordController.clear();
         }).catchError((error) {
           // Stop loading
           setState(() {
