@@ -57,7 +57,6 @@ class _EditBookingState extends State<EditBooking> {
       onConfirm: (date) {
         setState(() {
           dateController.text = DateFormat('yyyy-MM-dd').format(date);
-          deliverydateController.text = DateFormat('yyyy-MM-dd').format(date);
         });
       },
       currentTime: DateTime.now(),

@@ -119,6 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
           'names': names,
           'phone': "+266$phone",
           'location': location,
+          'is_Admin': false,
           'userId': userId,
         };
         // Send the data to Firestore

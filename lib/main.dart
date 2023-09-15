@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/adminDashboard/admin_dashboard.dart';
 import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/auth/register.dart';
 import 'package:m4k/screens/auth/reset_password.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const SplashScreen(),
         '/register': (context) => const RegisterPage(),
+        '/admin': (context) => const AdminDashboard(),
         '/about': (context) => const AboutScreen(),
         '/secondSplash': (context) => const SecondSplash(),
         '/login': (context) => const LoginScreen(),

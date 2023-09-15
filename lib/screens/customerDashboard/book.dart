@@ -52,7 +52,6 @@ class _BookingScreenState extends State<BookingScreen> {
       onConfirm: (date) {
         setState(() {
           dateController.text = DateFormat('yyyy-MM-dd').format(date);
-          deliverydateController.text = DateFormat('yyyy-MM-dd').format(date);
         });
       },
       currentTime: DateTime.now(),

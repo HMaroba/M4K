@@ -262,7 +262,8 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 const SizedBox(height: 7.0),
                 Text(
                   phoneNumber,
-                  style: TextStyle(fontSize: 15.0),
+                  style: const TextStyle(
+                      fontSize: 18.0, fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 40.0),
                 TextField(
