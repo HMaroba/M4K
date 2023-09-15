@@ -112,7 +112,7 @@ class _NavDrawerState extends State<NavDrawer> {
             ),
             onTap: () => {
               // Navigator.of(context).pop()
-              Navigator.pushNamed(context, '/profile')
+              Navigator.pushNamed(context, '/adminprofile')
             },
           ),
           ListTile(
@@ -123,7 +123,7 @@ class _NavDrawerState extends State<NavDrawer> {
             ),
             onTap: () => {
               // Navigator.of(context).pop()
-              Navigator.pushNamed(context, '/about')
+              // Navigator.pushNamed(context, '/about')
             },
           ),
           ListTile(
