@@ -4,10 +4,6 @@ List<Map<String, dynamic>> servicesList = [
     'imagePath': 'assets/images/dry.jpg',
   },
   {
-    'name': 'Washing ',
-    'imagePath': 'assets/images/washing2.png',
-  },
-  {
     'name': 'Ironing',
     'imagePath': 'assets/images/IRON.jpg',
   },

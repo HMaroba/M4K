@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                           fontWeight: FontWeight.w500,
                           color: Colors.white),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 80,
                     ),
                     ClipOval(
