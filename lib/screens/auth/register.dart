@@ -200,7 +200,7 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
               const SizedBox(height: 7.0),
               const Text(
-                'Create your profile to start your journey',
+                'Create your profile to join M4K laundry',
                 style: TextStyle(fontSize: 15.0),
               ),
               const SizedBox(height: 40.0),
