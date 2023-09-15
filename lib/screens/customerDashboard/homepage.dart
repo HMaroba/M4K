@@ -231,7 +231,7 @@ class _HomePageState extends State<HomePage> {
                                   left: 8, top: 8, bottom: 5),
                               child: Text(
                                 item['name'],
-                                style: const TextStyle(fontSize: 22),
+                                style: const TextStyle(fontSize: 20),
                               ),
                             )
                           ],
