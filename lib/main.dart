@@ -1,11 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:m4k/screens/adminDashboard/admin_dashboard.dart';
+import 'package:m4k/screens/adminDashboard/allbookings.dart';
 import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/auth/register.dart';
 import 'package:m4k/screens/auth/reset_password.dart';
 import 'package:m4k/screens/customerDashboard/book.dart';
 import 'package:m4k/screens/customerDashboard/customer_dashboard.dart';
+import 'package:m4k/screens/customerDashboard/profile.dart';
 import 'package:m4k/screens/customerDashboard/settings/about.dart';
 import 'package:m4k/screens/customerDashboard/settings/contactus.dart';
 import 'package:m4k/screens/customerDashboard/settings/feedback.dart';
@@ -38,6 +40,7 @@ class MyApp extends StatelessWidget {
         '/register': (context) => const RegisterPage(),
         '/admin': (context) => const AdminDashboard(),
         '/about': (context) => const AboutScreen(),
+        '/profile': (context) => const UserProfileScreen(),
         '/secondSplash': (context) => const SecondSplash(),
         '/login': (context) => const LoginScreen(),
         '/userdashboard': (context) => const DashboardPage(),
@@ -46,6 +49,10 @@ class MyApp extends StatelessWidget {
         '/feedback': (context) => const SendFeedbackPage(),
         '/book': (context) => const BookingScreen(),
         '/resetPassword': (context) => const ResetPasswordScreen(),
+
+        //ADMIN ROUTES
+
+        '/allbookings': (context) => const CustomersBookingScreen(),
       },
     );
   }

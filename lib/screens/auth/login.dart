@@ -68,8 +68,39 @@ class _LoginScreenState extends State<LoginScreen> {
             });
           });
 
+          // String userId = userCredential.user!.uid;
+          // // Check if the user is an admin
+          // if (userCredential.user != null) {
+          //   FirebaseFirestore.instance
+          //       .collection('customers')
+          //       .doc(userId)
+          //       .get()
+          //       .then((customerSnapshot) {
+          //     if (customerSnapshot.exists) {
+          //       bool isAdmin = customerSnapshot['is_Admin'];
+          //       if (isAdmin) {
+          //         // User is an admin, navigate to the admin page
+          //         Navigator.pushNamed(context, '/admin');
+          //       } else {
+          //         // User is not an admin, navigate to the customer page
+          //         Navigator.pushNamed(context, '/userdashboard');
+          //       }
+          //     } else {
+          //       // Handle the case where customer data doesn't exist
+          //       print('Customer data not found.');
+          //     }
+          //   }).catchError((error) {
+          //     // Handle Firestore errors
+          //     setState(() {
+          //       isLoading = false;
+          //     });
+          //     print('Firestore error: $error');
+          //   });
+          // }
+
           // Navigate to dashboard or home screen
-          Navigator.pushNamed(context, '/userdashboard');
+          // Navigator.pushNamed(context, '/userdashboard');
+          Navigator.pushNamed(context, '/admin');
         }).catchError((error) {
           // Stop loading
           setState(() {
