@@ -105,6 +105,22 @@ class _NavDrawerState extends State<NavDrawer> {
             onTap: () => {Navigator.popAndPushNamed(context, '/allbookings')},
           ),
           ListTile(
+            leading: Icon(Icons.verified_user_outlined),
+            title: Text(
+              'Customers',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () => {Navigator.popAndPushNamed(context, '/allbookings')},
+          ),
+          ListTile(
+            leading: Icon(Icons.mail),
+            title: Text(
+              'Messages',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () => {Navigator.popAndPushNamed(context, '/allbookings')},
+          ),
+          ListTile(
             leading: Icon(Icons.verified_user),
             title: Text(
               'Profile',
