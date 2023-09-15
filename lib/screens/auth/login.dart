@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -59,8 +60,6 @@ class _LoginScreenState extends State<LoginScreen> {
         )
             .then((userCredential) {
           // Clear fields
-          emailController.clear();
-          passwordController.clear();
 
           Future.delayed(const Duration(seconds: 3), () {
             setState(() {
@@ -68,39 +67,50 @@ class _LoginScreenState extends State<LoginScreen> {
             });
           });
 
-          // String userId = userCredential.user!.uid;
-          // // Check if the user is an admin
-          // if (userCredential.user != null) {
-          //   FirebaseFirestore.instance
-          //       .collection('customers')
-          //       .doc(userId)
-          //       .get()
-          //       .then((customerSnapshot) {
-          //     if (customerSnapshot.exists) {
-          //       bool isAdmin = customerSnapshot['is_Admin'];
-          //       if (isAdmin) {
-          //         // User is an admin, navigate to the admin page
-          //         Navigator.pushNamed(context, '/admin');
-          //       } else {
-          //         // User is not an admin, navigate to the customer page
-          //         Navigator.pushNamed(context, '/userdashboard');
-          //       }
-          //     } else {
-          //       // Handle the case where customer data doesn't exist
-          //       print('Customer data not found.');
-          //     }
-          //   }).catchError((error) {
-          //     // Handle Firestore errors
-          //     setState(() {
-          //       isLoading = false;
-          //     });
-          //     print('Firestore error: $error');
-          //   });
-          // }
+          // Assuming you have the authenticated user's ID in a variable called 'userId'
+          String userId = userCredential.user!.uid;
+
+// Fetch user data from Firestore where 'userID' matches 'userId'
+          FirebaseFirestore.instance
+              .collection('customers')
+              .where('userId', isEqualTo: userId)
+              .get()
+              .then((QuerySnapshot customerSnapshot) {
+            if (customerSnapshot.docs.isNotEmpty) {
+              // Assuming you want the first matching document (there should be only one)
+              var customerData =
+                  customerSnapshot.docs.first.data() as Map<String, dynamic>;
+              bool isAdmin = customerData['is_Admin'] ??
+                  false; // Default to false if 'is_Admin' is not present
+
+              if (isAdmin) {
+                // User is an admin, navigate to the admin page
+                Navigator.pushNamed(context, '/admin');
+              } else {
+                // User is not an admin, navigate to the user dashboard page
+                Navigator.pushNamed(context, '/userdashboard');
+              }
+            } else {
+              // Handle the case where no matching document is found
+              print('No matching document found.');
+            }
+
+            setState(() {
+              isLoading = false;
+            });
+          }).catchError((error) {
+            // Handle Firestore errors
+            setState(() {
+              isLoading = false;
+            });
+            print('Firestore error: $error');
+          });
 
           // Navigate to dashboard or home screen
           // Navigator.pushNamed(context, '/userdashboard');
-          Navigator.pushNamed(context, '/admin');
+          // Navigator.pushNamed(context, '/admin');
+          emailController.clear();
+          passwordController.clear();
         }).catchError((error) {
           // Stop loading
           setState(() {
