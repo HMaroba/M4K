@@ -36,7 +36,7 @@ class _SecondSplashState extends State<SecondSplash> {
               height: 35.0,
             ),
             const Text(
-              "We HAVE GOT YOU COVERED",
+              "WE HAVE GOT YOU COVERED",
               style: TextStyle(
                   fontSize: 23.0,
                   fontWeight: FontWeight.bold,

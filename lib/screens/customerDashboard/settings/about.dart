@@ -22,7 +22,10 @@ class _AboutScreenState extends State<AboutScreen> {
               ),
               Text(
                 'About Laundry Business M4K',
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.w600),
+                style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.pink),
               ),
               SizedBox(
                 height: 20,
