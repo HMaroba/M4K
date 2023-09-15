@@ -13,6 +13,7 @@ import 'package:m4k/screens/customerDashboard/settings/about.dart';
 import 'package:m4k/screens/customerDashboard/settings/contactus.dart';
 import 'package:m4k/screens/customerDashboard/settings/feedback.dart';
 import 'package:m4k/screens/customerDashboard/settings/payments.dart';
+import 'package:m4k/screens/customerDashboard/welcome.dart';
 import 'package:m4k/screens/splash/firstScreen.dart';
 import 'package:m4k/screens/splash/secondScreen.dart';
 import 'package:m4k/screens/splash/splash_screen.dart';
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const FirstSreenSplash(),
         '/splash': (context) => const SplashScreen(),
         '/register': (context) => const RegisterPage(),
+        '/welcome': (context) => const WelcomeScreen(),
         '/admin': (context) => const AdminDashboard(),
         '/about': (context) => const AboutScreen(),
         '/profile': (context) => const UserProfileScreen(),

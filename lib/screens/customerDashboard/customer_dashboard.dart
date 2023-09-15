@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:m4k/screens/customerDashboard/bookings.dart';
 import 'package:m4k/screens/customerDashboard/profile.dart';
 import 'package:m4k/screens/customerDashboard/settings.dart';
-import 'package:m4k/screens/customerDashboard/homepage.dart';
+import 'package:m4k/screens/customerDashboard/welcome.dart';
 
 class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
@@ -15,7 +15,8 @@ class _DashboardPageState extends State<DashboardPage> {
   int _selectedIndex = 0;
 
   List<Widget> pages = [
-    const HomePage(),
+    // const HomePage(),
+    const WelcomeScreen(),
     const CustomerBookings(),
     const WatchDemo(),
     const UserProfileScreen(),
