@@ -28,6 +28,8 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
   TextEditingController containerController = TextEditingController();
   TextEditingController laundryTypeController = TextEditingController();
   TextEditingController quantityController = TextEditingController();
+  TextEditingController laundryStatusController = TextEditingController();
+  TextEditingController bookingStatusController = TextEditingController();
 
   String? emailErrorText;
   String? timeErrorText;
@@ -38,6 +40,8 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
   String? quantityErrorText;
   String? deliveryTimeErrorText;
   String? deliveryDateErrorText;
+  String? bookingStatusErrorText;
+  String? laundryStatusErrorText;
   String? locationErrorText;
   bool isLoading = false;
 
@@ -130,6 +134,8 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
         quantityController.text = propertyData?['quantity'] ?? '';
         laundryTypeController.text = propertyData?['LaundryType'] ?? '';
         containerController.text = propertyData?['LaundryContainer'] ?? '';
+        laundryStatusController.text = propertyData?['LaundryStatus'] ?? '';
+        bookingStatusController.text = propertyData?['bookingStatus'] ?? '';
       });
     } catch (e) {
       print('Error fetching property data: $e');
@@ -160,6 +166,8 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
     String laundryType = laundryTypeController.text;
     String quantity = quantityController.text;
     String container = containerController.text;
+    String laundryStatus = laundryStatusController.text;
+    String bookingStatus = bookingStatusController.text;
 
     // Validate email field
     if (email.isEmpty) {
@@ -241,6 +249,24 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
         deliveryTimeErrorText = null;
       });
     }
+    if (laundryStatus.isEmpty) {
+      setState(() {
+        laundryStatusErrorText = 'Laundry status is required';
+      });
+    } else {
+      setState(() {
+        laundryStatusErrorText = null;
+      });
+    }
+    if (bookingStatus.isEmpty) {
+      setState(() {
+        bookingStatusErrorText = 'Booking Status is required';
+      });
+    } else {
+      setState(() {
+        bookingStatusErrorText = null;
+      });
+    }
 
     // Validate names field
     if (phone.isEmpty) {
@@ -275,6 +301,8 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
         quantityErrorText == null &&
         deliveryDateErrorText == null &&
         deliveryTimeErrorText == null &&
+        bookingStatusErrorText == null &&
+        laundryStatusErrorText == null &&
         locationErrorText == null &&
         dateErrorText == null) {
       try {
@@ -283,9 +311,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
           isLoading = true;
         });
 
-        // Get the newly created user's ID
-        String userId = _user!.uid;
-        print(userId);
         //Create a map of the data you want to send
 
         //Send the data to Firestore
@@ -293,7 +318,7 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
             .collection('bookings')
             .doc(widget.docId)
             .update({
-          'email': email,
+          // 'email': email,
           'date': date,
           'time': time,
           'deliveryTime': deliverytime,
@@ -301,9 +326,10 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
           'quantity': quantity,
           'LaundryType': laundryType,
           'LaundryContainer': container,
-          'phone': "+266$phone",
-          'location': location,
-          'userId': userId,
+          'LaundryStatus': laundryStatus,
+          'bookingStatus': bookingStatus,
+          // 'phone': "+266$phone",
+          // 'location': location,
         });
 
         // // Subscribe the user to the topic
@@ -370,7 +396,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const SizedBox(height: 20.0),
-
               const Text(
                 'Personal Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -396,7 +421,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                     errorText: phoneErrorText),
               ),
               const SizedBox(height: 20.0),
-
               TextField(
                 controller: emailController,
                 keyboardType: TextInputType.emailAddress,
@@ -442,45 +466,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                     errorText: locationErrorText),
               ),
               const SizedBox(height: 20.0),
-              // TextField(
-              //   controller: dateController,
-              //   keyboardType: TextInputType.datetime,
-              //   onChanged: (value) {
-              //     if (value.isEmpty) {
-              //       setState(() {
-              //         dateErrorText = 'Pick up date is required';
-              //       });
-              //     } else {
-              //       setState(() {
-              //         dateErrorText = null;
-              //       });
-              //     }
-              //   },
-              //   decoration: InputDecoration(
-              //       labelText: 'Pickup date',
-              //       hintText: 'Enter your pick up date',
-              //       errorText: dateErrorText),
-              // ),
-              // const SizedBox(height: 16.0),
-              // TextField(
-              //   controller: timeController,
-              //   keyboardType: TextInputType.datetime,
-              //   onChanged: (value) {
-              //     if (value.isEmpty) {
-              //       setState(() {
-              //         timeErrorText = 'Time is required';
-              //       });
-              //     } else {
-              //       setState(() {
-              //         timeErrorText = null;
-              //       });
-              //     }
-              //   },
-              //   decoration: InputDecoration(
-              //       labelText: 'Pick up time',
-              //       hintText: 'Enter pick up time',
-              //       errorText: timeErrorText),
-              // ),
               const Text(
                 'Pick up and Delivery Information ',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -507,7 +492,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                   errorText: timeErrorText,
                 ),
               ),
-
               const SizedBox(height: 16.0),
               TextField(
                 controller: deliverydateController,
@@ -530,7 +514,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                   errorText: deliveryTimeErrorText,
                 ),
               ),
-
               const SizedBox(height: 20.0),
               const Text(
                 'Laundry Information ',
@@ -596,10 +579,57 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                 decoration: InputDecoration(
                   labelText: 'Quantity',
                   hintText: 'Enter your laundry quantity',
-                  errorText: emailErrorText,
+                  errorText: quantityErrorText,
                 ),
               ),
-
+              const SizedBox(height: 22.0),
+              const Text(
+                'Status Information ',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              const SizedBox(height: 16.0),
+              TextField(
+                controller: laundryStatusController,
+                keyboardType: TextInputType.text,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      laundryStatusErrorText = 'Laundry Status is required';
+                    });
+                  } else {
+                    setState(() {
+                      laundryStatusErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Laundry Status',
+                  hintText: 'Enter Customer laundry status',
+                  errorText: laundryStatusErrorText,
+                ),
+              ),
+              const SizedBox(height: 16.0),
+              //
+              TextField(
+                controller: bookingStatusController,
+                keyboardType: TextInputType.text,
+                onChanged: (value) {
+                  if (value.isEmpty) {
+                    setState(() {
+                      bookingStatusErrorText = 'Booking Status is required';
+                    });
+                  } else {
+                    setState(() {
+                      bookingStatusErrorText = null;
+                    });
+                  }
+                },
+                decoration: InputDecoration(
+                  labelText: 'Booking Status',
+                  hintText: 'Enter booking status',
+                  errorText: bookingStatusErrorText,
+                ),
+              ),
               const SizedBox(height: 22.0),
               const Text(
                 'Payment Information ',
@@ -610,7 +640,6 @@ class _AdminEditBookingState extends State<AdminEditBooking> {
                 'Cash on Delivery',
                 style: TextStyle(fontSize: 20, color: Colors.pink),
               ),
-
               const SizedBox(height: 24.0),
               ElevatedButton(
                 style: ButtonStyle(

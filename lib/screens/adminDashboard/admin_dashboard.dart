@@ -86,7 +86,7 @@ class _NavDrawerState extends State<NavDrawer> {
                 color: Colors.pink,
                 image: DecorationImage(
                     fit: BoxFit.fill,
-                    image: AssetImage('assets/images/book.png'))),
+                    image: AssetImage('assets/images/logo.jpg'))),
           ),
           ListTile(
             leading: Icon(Icons.input),
