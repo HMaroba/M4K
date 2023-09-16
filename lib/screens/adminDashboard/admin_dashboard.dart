@@ -77,16 +77,21 @@ class _NavDrawerState extends State<NavDrawer> {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          const DrawerHeader(
-            child: Text(
-              '',
-              style: TextStyle(color: Colors.white, fontSize: 25),
+          DrawerHeader(
+            // child: Text(
+            //   '',
+            //   style: TextStyle(color: Colors.white, fontSize: 25),
+            // ),
+            // decoration: BoxDecoration(
+            //     color: Colors.pink,
+            //     image: DecorationImage(
+            //         fit: BoxFit.fill,
+            //         image: AssetImage('assets/images/logo.jpg'))),
+
+            child: Image.asset(
+              'assets/images/logo.jpg',
+              fit: BoxFit.cover,
             ),
-            decoration: BoxDecoration(
-                color: Colors.pink,
-                image: DecorationImage(
-                    fit: BoxFit.fill,
-                    image: AssetImage('assets/images/logo.jpg'))),
           ),
           ListTile(
             leading: Icon(Icons.input),
@@ -140,6 +145,7 @@ class _NavDrawerState extends State<NavDrawer> {
             onTap: () => {
               // Navigator.of(context).pop()
               // Navigator.pushNamed(context, '/about')
+              Navigator.pushNamed(context, '/adminSettings')
             },
           ),
           ListTile(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:m4k/screens/adminDashboard/admin_dashboard.dart';
 import 'package:m4k/screens/adminDashboard/admin_profile.dart';
 import 'package:m4k/screens/adminDashboard/allbookings.dart';
+import 'package:m4k/screens/adminDashboard/settings.dart';
 import 'package:m4k/screens/auth/login.dart';
 import 'package:m4k/screens/auth/register.dart';
 import 'package:m4k/screens/auth/reset_password.dart';
@@ -59,6 +60,7 @@ class MyApp extends StatelessWidget {
 
         '/allbookings': (context) => const CustomersBookingScreen(),
         '/adminprofile': (context) => const AdminProfileScreen(),
+        '/adminSettings': (context) => const AdminSettings(),
       },
     );
   }

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:m4k/screens/adminDashboard/admin_dashboard.dart';
 import 'package:m4k/screens/adminDashboard/admin_editBooking.dart';
 
 class CustomersBookingScreen extends StatefulWidget {
@@ -14,6 +15,7 @@ class _CustomersBookingScreenState extends State<CustomersBookingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text("Bookings List"),
         centerTitle: true,
