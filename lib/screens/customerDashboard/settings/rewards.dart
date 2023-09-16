@@ -85,6 +85,7 @@ class _RewardsScreenState extends State<RewardsScreen> {
                           ]),
                       onTap: () {
                         // Handle tapping on a promotion if needed
+                        _showClaimRewardDialog(context, promotion['title']!);
                       },
                     ),
                   );
@@ -96,4 +97,33 @@ class _RewardsScreenState extends State<RewardsScreen> {
       ),
     );
   }
+}
+
+void _showClaimRewardDialog(BuildContext context, String rewardTitle) {
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Claim Reward'),
+        content: Text('Do you want to claim the reward: $rewardTitle?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Handle reward claiming logic here
+              // You can add your logic to claim the reward
+              // Once claimed, you can show a success message or perform other actions
+              Navigator.of(context).pop(); // Close the dialog
+            },
+            child: Text('Claim'),
+          ),
+        ],
+      );
+    },
+  );
 }
