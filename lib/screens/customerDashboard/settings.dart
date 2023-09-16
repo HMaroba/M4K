@@ -58,6 +58,14 @@ class _SettingPageState extends State<SettingPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _user = _auth.currentUser;
+    // Fetch user data from Firestore
+    fetchUserData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {

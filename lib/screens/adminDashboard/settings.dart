@@ -58,6 +58,14 @@ class _AdminSettingsState extends State<AdminSettings> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _user = _auth.currentUser;
+    // Fetch user data from Firestore
+    fetchUserData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
@@ -79,8 +87,8 @@ class _AdminSettingsState extends State<AdminSettings> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: 10,
+                  const SizedBox(
+                    height: 5,
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
