@@ -187,6 +187,7 @@ class _SettingPageState extends State<SettingPage> {
                       onTap: () {
                         // Handle the My Rewards item click here
                         // You can navigate to a new page or perform an action
+                        Navigator.pushNamed(context, '/rewards');
                       },
                     ),
                     _buildListTile(

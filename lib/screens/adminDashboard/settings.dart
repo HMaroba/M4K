@@ -114,7 +114,7 @@ class _AdminSettingsState extends State<AdminSettings> {
                     children: [
                       ClipOval(
                         child: Image.asset(
-                          'assets/images/user3.png',
+                          'assets/images/ty.png',
                           height: 50,
                         ),
                       ),
