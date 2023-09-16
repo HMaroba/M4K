@@ -191,6 +191,15 @@ class _SettingPageState extends State<SettingPage> {
                       },
                     ),
                     _buildListTile(
+                      icon: Icons.wallet_giftcard_rounded,
+                      title: "Promotions",
+                      onTap: () {
+                        // Handle the My Rewards item click here
+                        // You can navigate to a new page or perform an action
+                        Navigator.pushNamed(context, '/promotions');
+                      },
+                    ),
+                    _buildListTile(
                       icon: Icons.feedback,
                       title: "Send Feedback",
                       onTap: () {

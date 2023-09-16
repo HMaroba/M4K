@@ -179,6 +179,16 @@ class _AdminSettingsState extends State<AdminSettings> {
                     onTap: () {
                       // Handle the My Rewards item click here
                       // You can navigate to a new page or perform an action
+                      Navigator.pushNamed(context, '/rewards');
+                    },
+                  ),
+                  _buildListTile(
+                    icon: Icons.wallet_giftcard_outlined,
+                    title: "Promotions",
+                    onTap: () {
+                      // Handle the My Rewards item click here
+                      // You can navigate to a new page or perform an action
+                      Navigator.pushNamed(context, '/promotions');
                     },
                   ),
                   _buildListTile(

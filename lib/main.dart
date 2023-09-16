@@ -14,6 +14,7 @@ import 'package:m4k/screens/customerDashboard/settings/about.dart';
 import 'package:m4k/screens/customerDashboard/settings/contactus.dart';
 import 'package:m4k/screens/customerDashboard/settings/feedback.dart';
 import 'package:m4k/screens/customerDashboard/settings/payments.dart';
+import 'package:m4k/screens/customerDashboard/settings/promotions.dart';
 import 'package:m4k/screens/customerDashboard/settings/rewards.dart';
 import 'package:m4k/screens/customerDashboard/welcome.dart';
 import 'package:m4k/screens/splash/firstScreen.dart';
@@ -57,6 +58,7 @@ class MyApp extends StatelessWidget {
         '/book': (context) => const BookingScreen(),
         '/resetPassword': (context) => const ResetPasswordScreen(),
         '/rewards': (context) => const RewardsScreen(),
+        '/promotions': (context) => const PromotionsScreen(),
 
         //ADMIN ROUTES
 
